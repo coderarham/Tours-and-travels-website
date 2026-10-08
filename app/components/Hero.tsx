@@ -30,7 +30,7 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 0 }}
       >
-        <source src="/videos/gemini_generated_video_9d0ecd81.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/di2nqcugo/video/upload/v1791502329/gemini_generated_video_9d0ecd81_aqvs7w.mp4" type="video/mp4" />
       </video>
 
       {/* Layer 2: Dark overlay for mobile readability */}

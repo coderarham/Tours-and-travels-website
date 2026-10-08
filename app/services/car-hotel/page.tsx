@@ -13,7 +13,7 @@ const config: ServicePageConfig = {
   title: "Car + Hotel Package",
   tagline: "The perfect travel combo — a comfortable hotel stay paired with a dedicated sightseeing car every single day. Breakfast included, car ready outside every morning.",
   heroGradient: "linear-gradient(160deg, #ecfdf5 0%, #d1fae5 50%, #f0fdf4 100%)",
-  videoBg: "/videos/hotel video.mp4",
+  videoBg: "https://res.cloudinary.com/di2nqcugo/video/upload/v1791502319/hotel_video_skglwc.mp4",
   accentColor: "accent-emerald",
   ctaLabel: "Book Stay & Ride",
   ctaService: "car-hotel",
