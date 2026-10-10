@@ -1,6 +1,5 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
 
 :root {
   --primary:        #0F6E56;
@@ -138,8 +137,8 @@ body {
   max-width: 560px;
   margin: 0 auto;
 }
-.accent-blue   { color: var(--primary); }
-.accent-emerald{ color: var(--primary); }
+.accent-blue    { color: var(--primary); }
+.accent-emerald { color: var(--primary); }
 
 /* ── Badges ── */
 .badge {
