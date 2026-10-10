@@ -92,17 +92,17 @@ type FormData = {
   name: string; whatsapp: string; email: string;
   pickup: string; date: string; time: string;
   days: string; adults: string; kids: string;
-  carType: string; spots: string[]; customRoute: string; special: string;
+  carType: string; package: string; spots: string[]; customRoute: string; special: string;
 };
 
 const INIT: FormData = {
   name: "", whatsapp: "", email: "", pickup: "",
   date: "", time: "", days: "1", adults: "1", kids: "0",
-  carType: "", spots: [], customRoute: "", special: "",
+  carType: "", package: "", spots: [], customRoute: "", special: "",
 };
 
-function BookingForm() {
-  const [form, setForm] = useState<FormData>(INIT);
+function BookingForm({ preselect }: { preselect?: string }) {
+  const [form, setForm] = useState<FormData>({ ...INIT, package: preselect ?? "" });
   const [today, setToday] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -190,6 +190,15 @@ function BookingForm() {
               <option value="2">2 Days</option>
               <option value="3">3 Days</option>
               <option value="4+">4+ Days</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-1.5">Select Package <span className="text-xs text-slate-400 font-normal">(Optional)</span></label>
+            <select className="input-field" value={form.package} onChange={set("package")}>
+              <option value="">Choose a package (optional)</option>
+              <option value="standard">Standard City Tour — 8 Hours / 80 Kms</option>
+              <option value="extended">Extended City Tour — 12 Hours / 120 Kms</option>
+              <option value="outstation">Outstation / Multi-Day Trip</option>
             </select>
           </div>
           <div>
@@ -284,6 +293,7 @@ function BookingForm() {
 /* ── Main Page ── */
 export default function CarRentalPage() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const [selectedPackage, setSelectedPackage] = useState("");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -386,7 +396,13 @@ export default function CarRentalPage() {
                       </li>
                     ))}
                   </ul>
-                  <a href="#booking-form" className="btn-primary text-sm text-center">Select This Package</a>
+                  <a
+                    href="#booking-form"
+                    onClick={() => setSelectedPackage(pkg.name === "Standard City Tour" ? "standard" : pkg.name === "Extended City Tour" ? "extended" : "outstation")}
+                    className="btn-primary text-sm text-center"
+                  >
+                    Select This Package
+                  </a>
                 </div>
               ))}
             </div>
@@ -401,7 +417,7 @@ export default function CarRentalPage() {
               <h2 className="section-title mb-3">Book Your <span className="accent-blue">Dedicated Car</span></h2>
               <p className="text-slate-500 text-lg">Fill in the details below. We'll WhatsApp you a confirmed quote within 2 hours.</p>
             </div>
-            <BookingForm />
+            <BookingForm preselect={selectedPackage} />
           </div>
         </section>
 
