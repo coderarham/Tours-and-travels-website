@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Services from "./components/Services";
+import DestinationsGrid from "./components/DestinationsGrid";
+import ExploreSection from "./components/ExploreSection";
 import WhyChooseUs from "./components/WhyChooseUs";
 import BookingForm from "./components/BookingForm";
 import Footer from "./components/Footer";
@@ -12,8 +12,8 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Services />
+        <DestinationsGrid />
+        <ExploreSection />
         <WhyChooseUs />
         <BookingForm />
       </main>

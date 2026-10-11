@@ -17,11 +17,11 @@ export default function Footer() {
             <div className="flex items-center gap-2.5 mb-5">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm"
                 style={{ background: "linear-gradient(135deg, #0F6E56, #1D9E75)" }}>
-                <span className="text-white text-xs font-black">TK</span>
+                <span className="text-white text-xs font-black">MM</span>
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-base font-black text-white">
-                  Travel<span style={{ color: "#5DCAA5" }}>Kolkata</span>
+                  Make<span style={{ color: "#5DCAA5" }}>MyWay</span>
                 </span>
                 <span className="text-[9px] font-medium tracking-widest uppercase" style={{ color: "#4B6B63" }}>
                   Premium Travel
@@ -102,7 +102,7 @@ export default function Footer() {
                 { icon: "📍", text: "Kolkata, West Bengal, India", href: undefined },
                 { icon: "📞", text: "+91 99999 99999", href: "tel:+919999999999" },
                 { icon: "📞", text: "+91 88888 88888", href: "tel:+918888888888" },
-                { icon: "✉️", text: "hello@travelkolkata.in", href: "mailto:hello@travelkolkata.in" },
+                { icon: "✉️", text: "makemyway.official@gmail.com", href: "mailto:makemyway.official@gmail.com" },
               ].map((c) => (
                 <li key={c.text}>
                   {c.href ? (
@@ -143,7 +143,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3"
           style={{ borderTop: "1px solid #1A3530" }}>
-          <p className="text-xs" style={{ color: "#3A5A54" }}>© {year} TravelKolkata. All rights reserved.</p>
+          <p className="text-xs" style={{ color: "#3A5A54" }}>© {year} MakeMyWay. All rights reserved.</p>
           <p className="text-xs" style={{ color: "#3A5A54" }}>Made with ❤️ for the City of Joy</p>
         </div>
 

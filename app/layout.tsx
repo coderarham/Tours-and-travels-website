@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TravelKolkata – Premium Travel & Tourism",
+  title: "MakeMyWay – Premium Travel & Tourism",
   description: "Luxury car rentals, hotel packages, and complete travel solutions from the City of Joy.",
 };
 
