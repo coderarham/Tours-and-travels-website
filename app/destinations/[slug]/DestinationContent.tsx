@@ -2,22 +2,22 @@
 import { useState } from "react";
 import { Destination } from "../../data/destinations";
 
-const TABS = ["About", "How to Reach", "Attractions"] as const;
+const TABS = ["Explore", "About", "How to Reach"] as const;
 type Tab = typeof TABS[number];
 
 export default function DestinationContent({ dest }: { dest: Destination }) {
-  const [activeTab, setActiveTab] = useState<Tab>("About");
+  const [activeTab, setActiveTab] = useState<Tab>("Explore");
 
   return (
     <>
       {/* Tabs */}
       <div className="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 flex gap-0">
+        <div className="max-w-6xl mx-auto px-2 flex">
           {TABS.map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className="px-5 py-4 text-sm transition-all border-b-2 whitespace-nowrap"
+              className="flex-1 py-3.5 text-xs sm:text-sm transition-all border-b-2 whitespace-nowrap"
               style={{
                 borderBottomColor: activeTab === tab ? "#0F6E56" : "transparent",
                 color: activeTab === tab ? "#0F6E56" : "#5F5E5A",
@@ -31,7 +31,7 @@ export default function DestinationContent({ dest }: { dest: Destination }) {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col lg:flex-row gap-8">
+      <div className="max-w-6xl mx-auto px-4 py-6 sm:py-10 flex flex-col lg:flex-row gap-6 sm:gap-8">
 
         {/* Left — 70% */}
         <div className="flex-1 min-w-0">
@@ -84,17 +84,17 @@ export default function DestinationContent({ dest }: { dest: Destination }) {
             </div>
           )}
 
-          {activeTab === "Attractions" && (
+          {activeTab === "Explore" && (
             <div>
-              <h2 className="text-2xl font-semibold mb-6" style={{ color: "#1F2A28" }}>Attractions & Activities</h2>
-              <div className="flex flex-col gap-6">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6" style={{ color: "#1F2A28" }}>Must-Visit Spots in {dest.name}</h2>
+              <div className="flex flex-col gap-4">
                 {dest.attractions.map((a, i) => (
-                  <div key={i} className="flex flex-col sm:flex-row gap-4 p-4 rounded-2xl border" style={{ borderColor: "#D3D1C7", background: "#fff" }}>
+                  <div key={i} className="flex flex-col sm:flex-row gap-3 p-3 sm:p-4 rounded-2xl border" style={{ borderColor: "#D3D1C7", background: "#fff" }}>
                     {a.image && (
-                      <img src={a.image} alt={a.name} className="w-full sm:w-44 h-32 object-cover rounded-xl flex-shrink-0" />
+                      <img src={a.image} alt={a.name} className="w-full sm:w-40 h-44 sm:h-28 object-cover rounded-xl flex-shrink-0" />
                     )}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-base mb-2" style={{ color: "#1F2A28" }}>{a.name}</h3>
+                      <h3 className="font-semibold text-base mb-1.5" style={{ color: "#1F2A28" }}>{a.name}</h3>
                       <p className="text-sm leading-relaxed" style={{ color: "#5F5E5A" }}>{a.description}</p>
                     </div>
                   </div>
@@ -109,10 +109,10 @@ export default function DestinationContent({ dest }: { dest: Destination }) {
         <div className="w-full lg:w-80 flex-shrink-0 flex flex-col gap-6">
 
           {/* Service Cards */}
-          <div className="rounded-2xl border p-5" style={{ borderColor: "#9FE1CB", background: "#F0FBF7" }}>
+          <div className="rounded-2xl border p-4 sm:p-5" style={{ borderColor: "#9FE1CB", background: "#F0FBF7" }}>
             <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "#0F6E56" }}>Plan Your Trip</p>
-            <h3 className="text-base font-semibold mb-4" style={{ color: "#1F2A28" }}>How would you like to travel?</h3>
-            <div className="flex flex-col gap-3">
+            <h3 className="text-base font-semibold mb-3" style={{ color: "#1F2A28" }}>How would you like to travel?</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3">
               {[
                 { href: "/services/car-rental", emoji: "🚗", title: "Car Rental Only", desc: "Dedicated car & driver for the day" },
                 { href: "/services/car-hotel", emoji: "🏨", title: "Car + Hotel Package", desc: "Stay + sightseeing car combo" },

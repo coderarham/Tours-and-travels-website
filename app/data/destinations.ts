@@ -101,47 +101,52 @@ export const destinations: Destination[] = [
     attractions: [
       {
         name: "Tiger Hill",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdYWEd0ZKpiYOPxvkN7WNhdXMjIgLEg4LR9mf0-FXcDSds5co8eIlzbj5u&s=10",
         description: "Situated at an altitude of 2,590 meters and 13km from Darjeeling town, Tiger Hill offers an unparalleled view of sunrise from behind Kanchenjunga. On a clear day, Mount Everest is also visible. The sunlight reflected on snow-capped mountains creates a unique palette of colours that even the best cameras fail to capture."
       },
       {
         name: "Batasia Loop",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://darjeelingyatra.com/images/batasia-loop/batasia-loop-500-400.webp",
         description: "A spiral railway created to lower the gradient of ascent of the Darjeeling Himalayan Railway. From here, one can witness a spectacular view of Mt. Kanchenjunga and watch the remarkable engineering marvel of DHR where the railway line negotiates a circle and descends 1000 ft in altitude. At the centre is a War Memorial for brave Gorkha Soldiers."
       },
       {
+        name: "Tea Garden",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ymyc_yGpl6nd_ZzeT2N69qiDtN6CNVagnMDv76iJy98e9bg2cAYd_xk&s=10",
+        description: "A tea garden is an outdoor space where tea and light refreshments are served, or any garden with which the drinking of tea is associated. The tea garden was a part of early English commercial pleasure gardens; often parties of couples visited these, the men occupying themselves with lawn bowls and beer or wine, while the ladies went to the tea garden. In modern times it often means an outside area at a cafe or tearoom."
+      },
+      {
         name: "Darjeeling Himalayan Railway",
-        image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&q=80",
+        image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/0e/5b/5e/darjeeling-himalayan.jpg?w=1200&h=-1&s=1",
         description: "Also known as the Toy Train, this UNESCO World Heritage Site runs between New Jalpaiguri and Darjeeling. Built between 1879 and 1881, it is about 88 km long and climbs from 100m to 2,200m using six zig-zags and five loops. Steam locomotives still operate on certain routes, making it a unique colonial-era icon."
       },
       {
         name: "Ghoom Monastery",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Y3EfFpy5L8w6G4aFdO2ynEDMLedkWgGv9PESRh0BPQ&s=10",
         description: "Ghoom is a quaint hill town about 6 km from Darjeeling, popular for its multiple Buddhist monasteries amidst mountainous terrain. It houses India's highest railway station at 7,407 ft altitude, with an adjacent museum — a must-visit for railway enthusiasts."
       },
       {
         name: "The Mall (Chowrasta)",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://www.fabhotels.com/blog/wp-content/uploads/2024/05/68556769-darjeeling-mall-chowrasta.jpg",
         description: "The heart of Darjeeling town, Chowrasta livens up every evening with locals and tourists strolling, shopping at roadside stalls, enjoying street food, and taking pony rides. This no-vehicle zone offers a safe and free space for everyone to enjoy the true local Darjeeling experience."
       },
       {
         name: "Peace Pagoda",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfrrpUYsa-6JLCOkh5L7AJNFhttX15KU-6p5b15djtmQ&s=10",
         description: "Shanti Stupa or Peace Pagoda houses four avatars of Buddha with the aim to spread peace. Built under the guidance of Buddhist monk Nichidatsu Fujii, it stands 28.5 meters tall with a diameter of 23 meters. Situated on the slopes of Jalapahar hills, it is one of the most beautiful pagodas in the state."
       },
       {
         name: "Kurseong",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkXxh-NfCP-S3gHXUjguFVcmmd8Rajdudg9mXNhPGs-VqwSLMvD5YwB7OL&s=10",
         description: "Originally called 'Karsan Rup' meaning Land of White Orchid, Kurseong is a small hill town known for its horticulture, tea gardens, and colonial-era schools. It has a pleasant climate throughout the year and is perfect for nature lovers and adventure seekers."
       },
       {
         name: "Dow Hill",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDCrRDt2jJTLZYgF6ZT7qeu4AUql1ufLGoywkpsyHEamSjACW4tYgxhQI&s=10",
         description: "Located on top of Kurseong town, Dow Hill is covered with dense forest and sky-reaching pine trees, remaining shrouded in mist almost all the time. A deer park and water reservoir are nearby, offering good views of surrounding towns."
       },
       {
         name: "Salamander Lake",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2PupseGNu1EuBGCILuK-BXGX4f1rsrd5Ow6l3fEL1CT4-lSXEYX5XOLg&s=10",
         description: "Surrounded by tea gardens, this sanctuary shelters the rarest and most endangered species of salamanders. Once a famous British-era boating destination, locals and visitors still enjoy the peaceful and serene environment around the lake."
       }
     ],
@@ -162,62 +167,62 @@ export const destinations: Destination[] = [
     attractions: [
       {
         name: "Sangeet Bhavana",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://www.santiniketan.com/wp-content/uploads/2023/03/Sangit-Bhavana-1-1024x768.jpg",
         description: "Established by Rabindranath Tagore in 1919, Sangeet Bhavana focuses on music and dance. It imparts training in Rabindra Sangeet, Hindustani classical vocal and instrumental music, Manipuri and Kathakali dance styles, dramas, and Tagore's own musical dance-dramas."
       },
       {
         name: "China Bhavan",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ9bo8OqSi82e_Jh2_ziqtKACEGu2sLaNe5Bk2jF1O3I2yM_mqKVo44wsD&s=10",
         description: "Dedicated to the study of Chinese culture, traditions, and language, China Bhavan is regularly visited by Chinese scholars. The beautifully made building features intricate patterns on its exterior and houses a rich collection of Chinese literature and cultural artifacts."
       },
       {
         name: "Sonajhurir Haat",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIT-hItyZOovSesrgHLFd0wnwpmT_Dci2Wp58wNRI9tHwfVPVELHw918Ws&s=10",
         description: "An open-air market in Sonajhuri forest about 9 km from Bolpur. Thousands of tourists visit every weekend to shop from this vibrant haat. The natural beauty of the eroded soil of river Kopai, known as KHOAI, is a unique geographical transformation worth seeing."
       },
       {
         name: "Kala Bhavan",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiuxHw0yGuKKycXKBEbiYBNMuG8DzN5qhZtWU2UsEitg&s=10",
         description: "Founded in 1919, Kala Bhavana is a distinguished centre for Visual Art practice and research in India. It is the fine arts faculty of Visva-Bharati University, carrying forward the artistic legacy of Nandalal Bose, Benodebehari Mukhopadhyay, and Ramkinkar Baij."
       },
       {
         name: "Chattimtala",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcHmZD58i--Cf59A6WMfyWUXj1YQVoJAMpy5rCtT900j8HQDHjqHRMx6DR&s=10",
         description: "The meditation spot of Tagore's father, Maharishi Debendranath Tagore. He first started upasana here on the 7th of Poush, celebrated every year as Poush Mela. Graduates are honored with a branch of Saptaparni tree, developing a bond with the institute."
       },
       {
         name: "Poush Mela",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://www.santiniketan.com/wp-content/uploads/FB_IMG_1514040553100.jpg",
         description: "The most remarkable annual fair of Birbhum district, celebrated at Shantiniketan Mela Grounds to mark the foundation day. It attracts visitors from around the world with Baul musicians, tribal dancers, and local village artists. The week-long carnival marks the beginning of the harvest season."
       },
       {
         name: "Uttrayan Complex",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNvtt2exDJ6k_AwcFm8sDZYr9-wvg7ZrbrcLignlXCQ2lO2T9UkrdDD2A&s=10",
         description: "The enclave of Rabindranath's own houses built over the last three decades of his life (1919–1941). The complex includes Udayana, Konark, Shyamali, Punascha, and Udichi — buildings that reflect the architectural genius of the poet's son, Rathindranath Tagore."
       },
       {
         name: "Prayer Hall (Upasana Ghar)",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv0ui7ZJgQuhqUyMdUJxJ-32evklEGkFzL5ma_dMKTVk-LVoD1kBtqKtE&s=10",
         description: "One of the most stunning buildings in Santiniketan, made from Belgian Glass. Also called Kanch Mandir, prayers are held every Wednesday and the hall is lined with candles every evening, accentuating its ethereal beauty."
       },
       {
         name: "Rabindra Bhavan Museum",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://hblimg.mmtcdn.com/content/hubble/img/shantiniketan/mmt/activities/m_activities_shantiniketan_rabindra_bhavana_l_400_640.jpg",
         description: "Built in 1961, this museum houses Tagore's original manuscripts, letters, documents, paintings, certificates, and photographs. It also includes the Nobel Prize Medallion he received — a must-visit for every Tagore admirer."
       },
       {
         name: "Ballavpara Wildlife Sanctuary",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://hblimg.mmtcdn.com/content/hubble/img/shantiniketan/mmt/activities/m_Ballavpur%20Wildlife%20Sanctuary-1_l_362_543.jpg?im=Resize=(412,347.56)",
         description: "Located in Santiniketan, spread across 200 hectares on the fringes of Bolpur. Established in 1967, it has one of the most successful deer conservation records in the state, home to Cheethals (Spotted Deer), Blackbucks, jackals, and foxes."
       },
       {
         name: "Visva-Bharati University",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://www.santiniketan.com/wp-content/uploads/visva-bharati-university-2-1920x1080.jpg",
         description: "Founded by Nobel Laureate Rabindranath Tagore, this public central university is an institution of national importance. Tagore believed in open-air education in a natural environment, modeled on the ancient Gurukul system — a vision that still defines the university's unique character."
       },
       {
         name: "Amar-Kutir",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ71yhWLxTxOwcPTjBzbd5P5Vhq36KK61OFNlkvqWqpzGPdBlb3o3VWP5r4&s=10",
         description: "Located near Visva-Bharati University, Amar Kutir showcases locally made handicrafts including leather bags, clothes, and wooden items. Founded as a place of refuge for political prisoners, it was later transformed into a centre for cottage industries to uplift rural Bengal."
       }
     ],
@@ -238,47 +243,47 @@ export const destinations: Destination[] = [
     attractions: [
       {
         name: "Henry's Island (Bakkhali)",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHvpEMzyJ2hikw3fQfsDq4R_jxJq54g5gWi1ke-2jy1kbZK30QOunK9IKI&s=10",
         description: "Located on the western edge of the Sundarbans, Henry's Island is named after a European surveyor from the late 19th century. One of the numerous islands forming the Ganga-Brahmaputra delta, it offers an interesting mix of beach and mangrove forest. Tourists can laze on the beach and spot wildlife simultaneously, with a spectacular view from the watch tower in Bakkhali."
       },
       {
         name: "Sajnekhali Watch Tower",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpSkn0Y5UvLSCOgVPcmsSpvK7o30hz5H2zHg6Gukn-geSo05Np93mTM38&s=10",
         description: "One of the most renowned watch towers in the Sundarbans, popular for its proximity to several resorts and serving as the forest department's head office. Tourists can obtain park entry permits here. Major attractions include Bono Bini Temple, Mangrove Interpretation Center, and the Bengal Tourism lodge. Bird lovers can spot Pelicans, Kingfishers, White Bellied Sea Eagles, and Sandpipers."
       },
       {
         name: "Bhagabatpur Crocodile Sanctuary",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF_eCqQKL_CQeE5EfakG6xZzhxNUOKMKhazh5EPUO39L9VDEj9SNzD-IQ&s=10",
         description: "The only crocodile project in West Bengal, located adjacent to Lothian Island on the bank of the Saptamukhi Estuary. The hatchery houses estuarine crocodiles and Batagur Baska tortoises of varying ages. The dense mangrove forest at the confluence of the Saptamukhi river system offers immense natural beauty throughout the year."
       },
       {
         name: "Burirdabri Watch Tower",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dqwBNZqDiXcL6RCyZDOt_nH92Gq5zD0JwheQ2kZoOTF3dAfIBOx4oucH&s=10",
         description: "Famous for its mud walks and mangrove cage trail leading to the Raimongal Viewpoint. The mud walk lets you observe snails, crabs, and mollusks up close. The wooden bridge walk through the mud cage ends at a watchtower overlooking Bangladesh, with the Raimongal River forming the international boundary. One can see the Bangladesh Sundarbans from here."
       },
       {
         name: "Netidhopani Watch Tower",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeDUagyjSHCbXWgJc_t3FsgyeGfqpZU_6WQfQIbQFVco3jUNgyY6vd2GMD&s=10",
         description: "Associated with the legend of Behula and Lakhindari, this watchtower offers a splendid view of the ruins of a 400-year-old Shiva Temple. It is believed a road built by King Pratapaditya to guard the coastal area lies buried nearby. A sweet water pond is also present for tourists to explore."
       },
       {
         name: "Haliday Island Wildlife Sanctuary",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQShblMazrYkie5Hy3HNZ3LbdllV6QuwWtLREIQpfr3LYfRoay-Bsp2T3IX&s=10",
         description: "Situated on the Matla river near the Bay of Bengal, Haliday Island is home to spotted deer, wild boar, barking deer, and rhesus macaque. Royal Bengal tigers are occasional visitors. Spanning 3.5 sq km, it is part of the Sundarbans Biosphere Reserve, officially declared in 1989."
       },
       {
         name: "Kalashdeep",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRAjdVb_2G8_vkl1-6W6LDzmfo0z_xBJNDslAn-zsEVliKJznxxSPehHk&s=10",
         description: "Part of the Sundarbans National Park at the estuary of the Matla river. Royal Bengal tigers often come here to drink sweet water from a nearby pond. During winters, it becomes the breeding ground for Olive Ridley Turtles. Also a great spot for coastal birds and uncommon waders."
       },
       {
         name: "Bakkhali Beach",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdcAVrAa0lU2htmVEppfcXS2rcXG-FioodJdiRM3DcvA&s",
         description: "A seaside hamlet in South 24 Parganas with a white sand beach stretching about 8 km from Bakkhali to Fraserganj. Perfect for nature lovers seeking peace and serenity. Nearby attractions include the Bhagabatpur Crocodile Project, Sagar Island, Jambu Dwip, and Fraserganj. Best visited from October to March."
       },
       {
         name: "Sudhanyakhali Watch Tower",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7X_9flzU5OGnOiaD5dRRP4z1U8x01ThO-oBGPuIgpPe3NjWlKv16Mp30&s=10",
         description: "The perfect spot for wildlife enthusiasts to spot a tiger. The watchtower holds 25 people and overlooks a sweet water pond where wild animals come to drink. A vast grassland behind the pond offers invigorating views of the wild. Other wildlife spotted here includes crocodiles, wild boars, and axis deer."
       }
     ],
@@ -299,52 +304,52 @@ export const destinations: Destination[] = [
     attractions: [
       {
         name: "Gorumara National Park",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/03/92/6c/c7/gorumara-national-park.jpg?w=900&h=500&s=1",
         description: "Situated in the foothills of the Eastern Himalayas, Gorumara is spread over 80 sq km and is home to the mighty One Horned Indian Rhino. Declared a Reserve Forest in 1895 and a National Park in 1994, it was recognized as one of India's best protected areas in 2009. Jungle safaris bring you up close to rhinos, elephants, bison, and leopards."
       },
       {
         name: "Gajoldoba",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_UcosLDdn8nK5DERhUErCFXWxDRnum5cFsgjaTlv4zG2ANFA12PfvvRA6&s=10",
         description: "A small village on the western bank of the Teesta River, 10 km from Siliguri. Famous for its dam in the Teesta basin, it is a bird watcher's paradise as migratory water birds throng the reservoir. Surrounded by the dense Baikunthapur forest, WBTDCL's property Bhorer Alo offers an enthralling nature experience."
       },
       {
         name: "Alipurduar",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/8c/6a/9b/caption.jpg?w=500&h=500&s=1",
         description: "The gateway to Bhutan and the northeast, Alipurduar is lush with tea gardens and dense jungles. It is home to the South Khairbari Tiger Rescue Centre — a permanent shelter for tigers, unrivaled in the entire northeast. The Buxa hills and Bhutan valley views make it a stunning destination for nature lovers."
       },
       {
         name: "Jaldapara National Park",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7ykGomqDNYhB6RXZKk4L346S5edwS-LBPp2icgmyCiFsO6aib0A06iq4&s=10",
         description: "Covering 216 sq km of woods, grasslands, and riverbanks, Jaldapara was declared a wildlife sanctuary in 1941 for the Indian One-Horned Rhino and a National Park in 2012. Home to Bison, Hispid hare, Hog deer, Sambar, and Asian elephants. Birdwatchers can spot eagles, Bengal florican, Indian Hornbill, and jungle fowl."
       },
       {
         name: "Chapramari Wildlife Sanctuary",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGn9WvIahJxGfQA6-pnnbtmDobQNtVbb565GBcQ1CgFK3wIGIsreWDujUU&s=10",
         description: "An extension of Gorumara National Park, separated by the Murti River and covering 960 hectares. Declared a sanctuary in 1998, it is best known for its large elephant population. The forest is bounded by shimmering river streams ideal for angling and boating. Wildlife includes elephants, gaurs, leopards, spotted deer, and occasionally one-horned rhinos."
       },
       {
         name: "Chilapata Forest",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHVWWkLcJJUwWu1FOYNS560jAYnSdt_FHtj653oFMHu6q6S2OLcSHQWkC_&s=10",
         description: "The main elephant corridor between Jaldapara and Buxa Tiger Reserve. This dense forest near Jaldapara Wildlife Sanctuary sees elephants roaming freely. Activities include angling, birding, and jungle safari. A must-visit for wildlife enthusiasts seeking an authentic forest experience."
       },
       {
         name: "Buxa Fort",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7woNwEj7DRlhNQr2fUpTty1bAfSHmXux9h-kDcIS4bQ&s=10",
         description: "Situated at 2,600 feet within the Buxa Tiger Reserve, this British-era high-security prison is now a popular trekking destination. The uphill trek of 2.5 km from the foothills passes through dense forests. A starting point for various trails, it offers options for both avid and light trekkers."
       },
       {
         name: "Jayanti River",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIurC2-1Gjn_YGsy8sO9NYyVtB9pVo3St2nH1vOrlZ7w&s=10",
         description: "A small forested village near Rajabhatkawa, about 30 km from Alipurduar. The Jayanti River forms a natural border with Bhutan. Often called the 'Queen of Dooars', the route to Jayanti offers sightings of elephant herds, spotted deer, and peacocks. The nearby Mahakal Cave temple dedicated to Lord Shiva is another attraction."
       },
       {
         name: "Murti",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRILgh1XUSj30-4wTOiNVxY5seGplnXhM9XEf4SSeR5bgQYX483VVXgIZMc&s=10",
         description: "A picturesque village along the bank of River Murti, which originates from Neora Valley National Park. The river divides the Gorumara and Chapramari forests. Located 60 km from Jalpaiguri at the Himalayan foothills, Murti offers awe-inspiring scenery of adjacent forest areas and is ideal for nature walks and riverside camping."
       },
       {
         name: "Malbazar",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvOrNwXvNJ0LzScI55RUJckrWNA3AowQqeZ5BHAxFiR9mQziUF0z2J7N8&s=10",
         description: "One of the most important towns in the Dooars region, popular for its tea gardens and the beautiful Mal Park. Strategically located on NH31, it provides easy access to Gorumara National Park, Chapramari Wildlife Sanctuary, Gorubathan, Jhalong, Bindu, Samsing, and Suntalekhola — making it an ideal base for exploring Eastern Dooars."
       }
     ],
@@ -365,72 +370,72 @@ export const destinations: Destination[] = [
     attractions: [
       {
         name: "Chhau Dance",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdwWdrFTTCZ-kU6on3B7dsYIHqyTdVYlZ9orzOKPMFz0zg5hyeX9hcGZGY&s=10",
         description: "The world-famous Chhau dance of Purulia is a masked dance drama prevalent among Santhals, Kumars, Mahatos, and other communities. The beautiful masks, exclusive dance style, and colorful costumes have made it popular worldwide. The dance involves physical strength and agility comparable to martial arts, and is performed during festivals based on themes from the Ramayana, Puranas, and contemporary events."
       },
       {
         name: "Ayodhya Hills & Forest Reserve",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxePiTNTZLPdUVxMi_iE-lSC8FoBWaq_Uc1EI-gfhIQ&s=10",
         description: "An undulating hill range in Purulia district, part of the Dalma Hills and the Eastern Ghats. The highest peak is Gorgaburu, nearest to Bagmundi town. Popular for rock climbing, mountaineering, and camping in the Dhol Buru Hills. Two routes are available — via Jhalda or via Sirkabad."
       },
       {
         name: "Baghmundi",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://www.shutterstock.com/image-photo/baghmundi-purulia-scenic-beauty-marble-260nw-2476045019.jpg",
         description: "A small community development block in Purulia visited by thousands of tourists annually for the natural beauty of the Ayodhya Hills and its many dams. The picturesque landscape features undulating hills, cascading waterfalls, and lush green forests with rich flora and fauna."
       },
       {
         name: "Saheb Bandh Lake",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://hblimg.mmtcdn.com/content/hubble/img/puruliadestimages/mmt/activities/m_Saheb_Bandh_1_l_480_640.jpg",
         description: "A 50-acre lake in Purulia constructed in the mid-19th century during the British Raj. A popular sanctuary for bird watchers, it is home to migratory birds from Baluchistan, Siberia, and Europe during the migratory season."
       },
       {
         name: "Duarsini",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr-24ui74OHlEcdGQzNcgo9e5Ul6RSBouxrJLghjKKnOq1Zp5yLV5G4oc&s=10",
         description: "A small tribal village 13 km from Bandwan town, surrounded by Sal, Segun, Piyal, and Palash forests. The Dalma Forest here is home to bears, wolves, boars, and migrating elephant herds. Several tribal villages of Santhals, Shabaradh, Kheriya, and Munda tribes are nearby. The Forest Department runs an eco-tourism centre with traditional tribal cottages."
       },
       {
         name: "Murguma Dam",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTRQp0eHErb3JSakrVB2TNPngFP1XA0urMgFbU8DDqgQ&s=10",
         description: "A tribal village at the Purulia–Jharkhand border, known for its pure and calm lake. The combination of blue water and green surroundings makes it a peaceful picnic spot. Tourists can enjoy boating, fishing, and bird-watching. The earth-filled dam on the Kangsabati river is surrounded by scenic hills and forests, ideal for trekking and camping."
       },
       {
         name: "Bamni Falls",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpiIsM6k-Km28hZI0XrPjdjTWufteTDund90w6ReicqmigCs7sJrzHboZo&s=10",
         description: "A scenic waterfall surrounded by lush green forest in Baghmundi, Purulia. A popular picnic spot for nature lovers and adventure enthusiasts. A 20–30 minute trek through a beautiful forest trail of tall Sal trees leads to the waterfall. The rich flora is home to many varieties of birds."
       },
       {
         name: "Khairabera",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI7SRT5xzgmWfRHj_8ZePf-cVIG65rN8igZMJZffOZJ-4WSeLXVo1Pz0f5&s=10",
         description: "Situated in Baghmundi, 70 km from Purulia town, Khairabera has a vast water body at the foothills of Chemto and Barra Hills. A serene hill station surrounded by forests, streams, waterfalls, and hills. The irrigation dam on the Kangsabati river offers a picturesque view of surrounding hills and forests."
       },
       {
         name: "Baranti",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://upload.wikimedia.org/wikipedia/commons/2/23/Baranti_village_in_Purilia_08.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
         description: "A beautiful village surrounded by hills and lakes, 265 km from Kolkata. Near the Ramchandrapur Irrigation Project, it offers grand views of the reservoir. Tourists can take nature walks along Murardi Lake or through forests and watch the sun set over the hills and lake."
       },
       {
         name: "Garh Panchakot",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTzAfeVbAvVt1xjmgMzgNEiM7DYOmtZ6_EQpsr1xlzItRkM4utVWadb8g&s=10",
         description: "Situated at the foothill of Panchakot (Panchet Hill) in the northeast corner of Purulia district. The hilltop offers a picturesque panoramic view of the Panchet dam on the Damodar River and its reservoir."
       },
       {
         name: "Chhau Mask Making (Charida)",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvE-B2pm-vbl1EQoNw0M97PfLwlyQ2yL482WqPUrLmQ&s=10",
         description: "Charida village in Purulia is famous for making Chhau masks, with hundreds of families involved in this craft. The village has a Chhau museum showcasing this famous art and heritage. This cottage industry has been nurtured by the state government and is a unique cultural experience for visitors."
       },
       {
         name: "Jhumur Folk Music",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWw3hvux3qxGviNl5cktxtessjW30t1Foe3qhv_oHG8g&s=10",
         description: "An ancient musical form from the red-soil regions of western West Bengal — Purulia, Bankura, Bardhaman, and Birbhum. Popular among tribal communities like Santhal, Munda, Oraon, and Kharia tribes. Different Jhumur tunes are sung throughout the year based on the season, and the form is recognized for its lyrical and literary significance."
       },
       {
         name: "Deulghat",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47tTC5Vm_5aVwPuIHZH5jYGyPxOeuUs68NRYS8XYJO-39yghnnuTq-uU&s=10",
         description: "Known as the 'land of temples', Deulghat near Boram has ruins of 15 temples near the Kansai River. The prodigious architecture and beautiful carvings make it a must-visit. Deulghat Dam and Deulghat Waterfall are other popular attractions that draw visitors from across the region."
       },
       {
         name: "Surulia Eco Park",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtS54z-5T3hMAM34ek3zZ8ePBtrRr2k7HkoYhN7Y7OfDiAnPGy85rwyF4&s=10",
         description: "Developed by the Forest Department, Surulia is a popular eco-tourism picnic spot just 6 km from Purulia town, on the bank of the Kangsabati River. It has a deer park and tourism cottages inside the park, visited by large numbers of eco-tourists."
       }
     ],
@@ -452,77 +457,77 @@ export const destinations: Destination[] = [
     attractions: [
       {
         name: "Howrah Bridge",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Howrah_bridge_at_night.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
         description: "A balanced cantilever bridge over the Hooghly River, commissioned in 1943. With an overall length of 2,150 feet and a single span of 1,500 feet, it carries approximately 100,000 vehicles and 150,000 pedestrians daily — making it one of the busiest cantilever bridges in the world. An iconic landmark built using 26,500 tons of steel."
       },
       {
         name: "Victoria Memorial Hall",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsrHAVMvK9X5luCJiXzaiq5_gofaC5gwCbaYrpczIRjQ&s=10",
         description: "One of the most iconic landmarks of Kolkata, constructed in memory of Queen Victoria by Viceroy Lord Curzon. Built entirely of white marble, it is one of India's largest and oldest museum libraries, housing 28,934 artefacts and 3,900 paintings, surrounded by 21 gardens. A perfect spot for families, picnics, horse carriage rides, and street food."
       },
       {
         name: "Vidyasagar Setu",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://s7ap1.scene7.com/is/image/incredibleindia/vidyasagar-setu-kolkata-wb-3-attr-about?qlt=82&ts=1742153130316",
         description: "Popularly known as the Second Hooghly Bridge, Vidyasagar Setu is the longest cable-stayed bridge in India at 458 m long and 115 m wide. Named after educationist reformer Pandit Ishwar Chandra Vidyasagar, it connects Howrah to Kolkata via the Kona Expressway. Its mesmerizing view from the Hooghly River has made it a popular film backdrop."
       },
       {
         name: "Kalighat Temple",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpW4Mq1wz04vtjbCLs1_88uV3bIvxobTKyL2Q3wAO04Ib6YMMaOhuwEDI&s=10",
         description: "Regarded as the holiest Shaktipeeth among the 52 Shakti Peethams of India. Situated on the banks of Adi Ganga, the temple features a sanctum sanctorum, Nat Mandir, a Shiva Temple, and a Radha Krishna shrine. The main attraction is the idol of Goddess Kali with a long gold tongue."
       },
       {
         name: "Indian Museum (Jadu Ghar)",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgzqTNdw2Cdd14PFWtSixdQHLGMrVGjYwxvIZG6I5nPh9K2r73Cdh0Rrrx&s=10",
         description: "The ninth-oldest museum in the world and the largest in India. Highlights include an Egyptian mummy, a Buddhist stupa, the Indian Gallery with ancient artifacts and sculptures, and a natural history section. Features unique collections of Indian sculptures and coins from the second century AD."
       },
       {
         name: "Eco Park (New Town)",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFaHnuUC_AU5kIQC00tvdYvT9r7OKWuBC-cz7BP9qlaHhaRPYgoslPmsIk&s=10",
         description: "One of the largest urban parks in India, spread across 475 acres with a lake and lush greenery. Activities include duo cycling, kayaking, zorbing, rifle shooting, and high-speed boating. Features models of the Seven Wonders, Japanese Garden, Butterfly Garden, Floating Musical Fountain, and an eco island."
       },
       {
         name: "Jorasanko Thakur Bari",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNwPr-Yq_bFzntReNNqWPm_Y7O3KMGyYmlIe_TXCOSXw&s=10",
         description: "The ancestral home and birthplace of Rabindranath Tagore in North Kolkata, now housing Rabindra Bharati University. The Rabindra Bharati Museum established in 1961 exhibits untold stories from the Tagore family. A nerve centre of Bengal art, cultural reformation, Bengal Renaissance, and Brahmo Samaj."
       },
       {
         name: "Princep Ghat",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSZKZseglgEBnk711Veu6psH1HybNbh4cl4cAUWHPaw&s=10",
         description: "Built in 1841 during the British Raj and named after Anglo-Indian scholar James Princep. Located along the banks of the Ganges with stone steps leading to the water. A peaceful retreat with gardens, lawns, park benches, and shady trees. Tourists can hire small boats for a pleasure ride on the river."
       },
       {
         name: "Park Street",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://s7ap1.scene7.com/is/image/incredibleindia/park-street-kolkata-west-bengal-1-attr-hero?qlt=82&ts=1742152704187",
         description: "A famous thoroughfare in downtown Kolkata, known as Food Street and The Street that Never Sleeps. Home to iconic restaurants like Trinca's, Peter Cat, Blue Fox, Mocambo, and Moulin Rouge. Remains Kolkata's foremost dining district with many restaurants and pubs since the British era."
       },
       {
         name: "Millennium Park",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSwo8tTbHzEcJHIjPHETvlv58O3aTG_pBs9FrmTyWiQA&s",
         description: "A 2.5 km long park on Strand Road next to the Hooghly River, inaugurated on 26 December 1999. Part of the Riverside Beautification Project, it offers stunning views of the Hooghly waterfront and Howrah Bridge, beautified with trees and pretty lights."
       },
       {
         name: "Sovabazar Rajbari",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF5swZcCy4dua8O9uE31H4ZoMHg2AdCHCN2mZiEz6cr_boapHxj9f9ve0&s=10",
         description: "Also known as Baag ola Bari (House with the Lions), this 17th-century palace built by Raja Nabakrishna Deb is one of the oldest royal houses of Kolkata. Famous for its grand Durga Puja celebrations since 1757. The open courtyard Nat Mandap with columns and arches is a magnificent architectural highlight."
       },
       {
         name: "Eden Gardens",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://cdn.shopify.com/s/files/1/0703/9031/7343/files/Eden_Gardens.jpg?v=1750138598",
         description: "The mecca of cricket in East India. Established in 1864, it is the oldest and second-largest cricket stadium in India and third largest in the world, with a capacity of 66,000. Called cricket's answer to the Coliseum, renowned for its passionate crowd and a place of pilgrimage for international cricketers."
       },
       {
         name: "Rabindra Sadan",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Rabindra_Sadan_-_Kolkata_2011-10-16_160515.JPG?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
         description: "One of the oldest cultural hubs of India, inaugurated in 1961 by Prime Minister Jawaharlal Nehru. Named in honor of Rabindranath Tagore, it is the principal venue for the Kolkata Film Festival. Now a full-fledged cultural complex hosting dance, drama, theatre, art exhibitions, and photography shows."
       },
       {
         name: "Durga Puja",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw0wrhj8HelZYWsI4qDUV7G6ouOV-8ZSpZejhyfFF3gO13QxDShgh7iYZa&s=10",
         description: "The biggest festival of West Bengal, accorded UNESCO Intangible Cultural Heritage status in 2020. A 10-day celebration featuring elaborate pandals with innovative themes, stunning lighting, and beautiful idols. The carnival of idol immersion on Bijoy Dasami is a spectacular event. Preparations begin months in advance across the entire city."
       },
       {
         name: "Birla Mandir",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMxBjszTtaQP49dJeQcoC83nYXxtwcnWxE2UC7bx2V8_Y7zhbVf3d--X2a&s=10",
         description: "A magnificent 20th-century structure in white marble and cream sandstone on Ashutosh Chowdhury Avenue, Ballygunge. Built by the Birla family over 26 years and opened in 1996. Consecrated to Lord Krishna and Radha, reflecting Rajasthani architecture resembling the Lingaraj Temple of Bhubaneswar."
       }
     ],
@@ -544,82 +549,82 @@ export const destinations: Destination[] = [
     attractions: [
       {
         name: "Rasmancha",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9G8VNFY9kRE2d-jnKVJnQEUZP-st__Y7anlhUHTHjkA&s=10",
         description: "The oldest brick temple in Bishnupur, commissioned by Mallabhum king Hambir Malla Dev in 1600 AD. Shaped as an elongated pyramidal tower surrounded by hut-shaped turrets, it was used to house idols of Lord Krishna during the Rash festival. Maintained by the Archaeological Survey of India."
       },
       {
         name: "Shyam Rai Temple",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwdu_AapViRhMEr61iA-6dyro2ALUWmDKwAC_D_S8_jwBo5DvSD2a4rs&s=10",
         description: "A Pancharatna brick temple built by Malla King Raghunath Singha in 1643 AD, noted for elaborate terracotta ornamentations. The square-shaped temple has interior and exterior decorated with terracotta tiles depicting stories of Lord Krishna, the Ramayana, Mahabharata, plants, and animals."
       },
       {
         name: "Jorebangla Temple",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://www.trawell.in/admin/images/upload/736191918Bishnupur_Jor_Bangla_Temple_Main.jpg",
         description: "Built by Malla King Raghunath Singh in 1655, this brick temple resembles two thatched huts joined together and mounted on a single tower. Erected on a one-metre-high laterite platform, the entire outer wall is decorated with terracotta sculptures depicting episodes from the Ramayana and Mahabharata."
       },
       {
         name: "Madanmohan Temple",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0HnafUJCPxTlsf5TwFBapZGNFYVSoKLGytEWHXCew1I0QS3DPhqVCGeey&s=10",
         description: "Constructed by Malla King Durjana Singh Deva in 1694 AD for Lord Krishna and Goddess Radha. Built in Ekaratna style with a square flat roof and curved cornices. One of the most renowned temples in Bishnupur where the deity is still worshipped, with terracotta walls covered in Ramayana and Krishna Leela carvings."
       },
       {
         name: "Kalachand Temple",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHvb7t735ZE2vrKTKVf2ijxEg6P5yt3AhQ1by9QTiuDQ&s=10",
         description: "Built in 1656 by Malla king Raghunath Singha, the earliest Eka-ratna temple in Bishnupur. Made of laterite, about 11.1 sq mtrs on plan and 9.2 mtrs in height. Features resplendent terracotta carvings in the chala style of Bengal architecture."
       },
       {
         name: "Lalji Temple",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://thetempleguru.com/wp-content/uploads/2023/12/Lalji-Temple-Ambika-Kalna-West-Bengal-18.jpg",
         description: "Built by Malla king Bir Singha with a Shikhara on a raised square platform, devoted to Radha-Krishna. Features Bengali architecture with ornamental stucco decorations. The gateway has two cars for Lord Lalji and Lord Raghunath, taken out in procession during Dussera festival."
       },
       {
         name: "Radha Govinda Temple",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://kevinstandagephotography.wordpress.com/wp-content/uploads/2024/03/ksp_6292-6.jpg",
         description: "A terracotta Ekaratna temple built in 1729 during the time of Krishna Singha. Located near the Nandalal Temple and Radha Madhav Temple, close to the famous Pora Matir Hat weekly rural marketplace. Square on plan with a curved roof and Sikhara, featuring bas-relief carvings."
       },
       {
         name: "Radha Shyam Temple",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Qyb2R4M90nJct8ixCKF-08fddBGgoDGnrvkOzVb4TA&s",
         description: "An Ekaratna temple built in 1758 by King Chaitanya Singha, located beside the Mrinmayee Mata Temple. This south-facing terracotta temple stands within a large courtyard with outer walls featuring carvings in low relief with elaborate stucco ornamentation. Preserved by the Archaeological Survey of India."
       },
       {
         name: "Dal Madol Cannon",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://www.trawell.in/admin/images/upload/155467329Bishnupur_Dalmadal_Cannon_Main.jpg",
         description: "Built in 1742 by Raja Gopal Singh to protect Bishnupur from the Maratha invasion. The cannon measures 3.8 m in length with a barrel of 28.5 cm. Remarkably, despite being made of pure iron and kept in the open since its inception, it remains completely free from rust."
       },
       {
         name: "Garh Darwaja",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://kevinstandagephotography.wordpress.com/wp-content/uploads/2024/03/ksp_6586.jpg",
         description: "A terracotta gateway in Bishnupur, also known as Chota Patthar Darwaja, built during the rule of the Malla Kings. An arched terracotta structure with a plain exterior. Nearby lies the larger Bara Patthar Darwaja or Main Gateway of Bishnupur."
       },
       {
         name: "Baluchari Saree",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://dakshinvastram.com/cdn/shop/files/b59c5f69d9c1b89c37aac7deb43e0602.jpg?v=1784315218",
         description: "Bishnupur is famous for the exquisite Baluchari silk sarees with intricate weaving in the pallu and borders showcasing mythological stories from the Ramayana and Mahabharata. Made from pure silk with a natural shine and glossy look, these sarees are among the most prized in India."
       },
       {
         name: "Dokra Metal Casting",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ55SsvA0RSkalkUntyEtZH50pWOywLq6ovmkKUvaC6QeFY0KoFdCjZifC-&s=10",
         description: "A special art form practiced by the tribal Dokra Damar people of Bishnupur. Clay is coated with wax, then with clay paste, and fired to create religious symbols, jewelry, cutlery, and bells. Dokra jewelry is widely worn by women and this ancient craft is a surviving legacy of Bishnupur."
       },
       {
         name: "Bishnupur Music Festival",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ36LYKt6OypD9tXHmy5EQBW7TCz0SO1hHniVGLJx4Zxxfk5QICHNrBh8&s=10",
         description: "Every February, the West Bengal Tourism Department organizes the Bishnupur Music Festival to pay homage to the Bishnupur Gharana of Hindustani Classical Music — the only specialist method of Indian Classical Music from Bengal, originating in the 13th century following the Dhrupad tradition."
       },
       {
         name: "Mukutmanipur",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+        image: "https://mukutmanipurtourism.com/wp-content/uploads/2023/05/Kangsabati-Dam1-1.jpg",
         description: "Situated at the confluence of rivers Kansabati and Kumari, home to Santhal, Bhumij, and Munda tribes. Features the Kangsabati Dam — the second biggest earth dam in India — along with forests and hillocks. An ideal blend of tribal culture and serene nature, perfect for weekend getaways from Kolkata."
       },
       {
         name: "Susunia Hill",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://upload.wikimedia.org/wikipedia/commons/7/72/29RCCMAK_-_Susunia_Hill.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
         description: "A 1,500 ft high hill in the north-western part of Bankura District. Ideal for nature lovers with cascading waterfalls, greenery, and the Gandheshwari river. Famous for rock climbing and mountaineering. The oldest rock inscription of West Bengal is located here."
       },
       {
         name: "Santhali Dance",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI2ldx5G2cB9w-45Zr9bF45CQjjRE-lCUtPa2SrwNEJJb7XhF6o88WWes&s=10",
         description: "One of the popular folk dances of West Bengal, performed by the Santhali community for almost every occasion. Includes Sohrai (harvest dance) and Dasai (performed before Durga Puja). Accompanied by Madol, Flute, Dhamsa, Jhanj, and Kartal instruments."
       }
     ],
@@ -641,42 +646,42 @@ export const destinations: Destination[] = [
     attractions: [
       {
         name: "Old Digha Beach",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+        image: "https://images.trvl-media.com/place/6355627/98dcceb0-6117-4a53-8714-9ed49cde05b3.jpg",
         description: "The original and most iconic beach of Digha, known for its wide sandy shore and gentle waves. The beach is lined with casuarina trees and is ideal for morning and evening walks. The shallow water makes it safe for families with children. The beach comes alive at sunset with local food stalls, horse rides, and vendors selling shells and souvenirs."
       },
       {
         name: "New Digha Beach",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTcE2h0PUDIHQakWLHR1DWSqD5WHHlvsZi-cMQTfO7v6FBrBjSlmaialE&s=10",
         description: "A cleaner and more developed stretch of beach compared to Old Digha, with better amenities, hotels, and restaurants along the seafront. New Digha is popular for its evening promenade and is the hub of most tourist activity, shopping, and dining in the area."
       },
       {
         name: "Marine Aquarium & Research Centre",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://hblimg.mmtcdn.com/content/hubble/img/digha/mmt/activities/m_activities_digha_marine_aquarium_and_regional_centre_l_333_533.jpg",
         description: "One of the largest marine aquariums in India, located in New Digha. It houses a fascinating collection of marine life including various species of fish, sea turtles, sharks, and corals. A must-visit for families and children to learn about the rich marine biodiversity of the Bay of Bengal."
       },
       {
         name: "Shankarpur Beach",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtRakpqOkSx67m7HpMi-YHFcOHBiZjRAasAUTDcoZerjWGdPA4Kwq6fdg&s=10",
         description: "A quieter and less crowded beach about 14 km from Digha, known for its natural beauty and a large fishing harbour. Shankarpur is ideal for those seeking a peaceful beach experience away from the crowds. The sight of hundreds of fishing boats returning at dawn is a spectacular visual treat."
       },
       {
         name: "Mandarmani",
-        image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+        image: "https://holaciti.com/assets/place/1764436853place.webp",
         description: "A small beach village about 30 km from Digha, famous for being one of the longest motorable beaches in India. The red crabs on the beach are a unique attraction. Mandarmani is popular for beach drives, seafood, and a relaxed coastal atmosphere with numerous resorts along the shore."
       },
       {
         name: "Talsari Beach",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnYVovE-XHNAvkgZDN3Qo-PiVGIsCXKhThDupyrLFVlNuesKUYHOFa0pd_&s=10",
         description: "Located on the Odisha-West Bengal border, about 10 km from Digha, Talsari is a pristine and relatively untouched beach surrounded by casuarina forests. The Subarnarekha River meets the Bay of Bengal here, creating a beautiful confluence. It is a perfect spot for nature lovers and photography enthusiasts."
       },
       {
         name: "Chandaneswar Temple",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        image: "https://www.soil2soulexpeditions.com/admin/public/images/blog/image_file/288/ChandaneswarTemple.png",
         description: "A famous Shiva temple located about 8 km from Digha on the Odisha border. The temple is dedicated to Lord Shiva and is visited by thousands of devotees, especially during Shivratri when a massive fair is organized. The temple is an important religious site for both West Bengal and Odisha pilgrims."
       },
       {
         name: "Udaipur Beach",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQohnRL3bxmY_KDONKMTTjExshO2sEl6tME8THsaK-sQWqg9F6AU6u81RI&s=10",
         description: "A hidden gem near Digha, Udaipur beach is a secluded and peaceful stretch of coastline that remains largely untouched by mass tourism. Surrounded by casuarina groves, it offers a serene escape for those looking to enjoy the beach in solitude."
       }
     ],

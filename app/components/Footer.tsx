@@ -10,10 +10,10 @@ export default function Footer() {
     <footer style={{ background: "#0D1F1B" }}>
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
 
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
 
           {/* Brand */}
-          <div className="md:col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm"
                 style={{ background: "linear-gradient(135deg, #0F6E56, #1D9E75)" }}>
@@ -93,7 +93,7 @@ export default function Footer() {
           </div>
 
           {/* Contact + Newsletter */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <h4 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#4B6B63" }}>
               Contact Us
             </h4>
@@ -123,16 +123,16 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#4B6B63" }}>
               Newsletter
             </h4>
-            <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
+            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-2">
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 rounded-xl px-3 py-2.5 text-sm outline-none transition-colors"
+                className="w-full rounded-xl px-3 py-2.5 text-sm outline-none transition-colors"
                 style={{ background: "#1A3530", border: "1px solid #2A4A44", color: "#fff" }}
                 onFocus={e => (e.currentTarget as HTMLElement).style.borderColor = "#0F6E56"}
                 onBlur={e => (e.currentTarget as HTMLElement).style.borderColor = "#2A4A44"}
               />
-              <button type="submit" className="btn-primary text-xs px-4 py-2.5 whitespace-nowrap">
+              <button type="submit" className="btn-primary text-sm px-4 py-2.5 w-full">
                 Subscribe
               </button>
             </form>
