@@ -1,4 +1,5 @@
 import ServicePageLayout, { ServicePageConfig } from "../../components/ServicePageLayout";
+import { UltimateForm } from "../../components/ServiceForms";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,6 +18,11 @@ const config: ServicePageConfig = {
   ctaLabel: "Plan My Ultimate Trip",
   ctaService: "full-package",
   ctaClass: "btn-primary",
+  formSection: {
+    heading: "Design My Ultimate Trip",
+    subheading: "Share your dream trip details and our experts will craft a personalized itinerary within 24 hours.",
+    form: <UltimateForm />,
+  },
   whatWeOffer: {
     heading: "Everything Managed, End-to-End",
     points: [

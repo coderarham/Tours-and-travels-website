@@ -1,4 +1,5 @@
 import ServicePageLayout, { ServicePageConfig } from "../../components/ServicePageLayout";
+import { CarHotelForm } from "../../components/ServiceForms";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,6 +19,11 @@ const config: ServicePageConfig = {
   ctaLabel: "Book Stay & Ride",
   ctaService: "car-hotel",
   ctaClass: "btn-emerald",
+  formSection: {
+    heading: "Book Your Car + Hotel Package",
+    subheading: "Fill in the details and we'll send you a custom quote within 2 hours on WhatsApp.",
+    form: <CarHotelForm />,
+  },
   whatWeOffer: {
     heading: "What's Included in Car + Hotel",
     points: [

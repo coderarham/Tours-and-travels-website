@@ -1,229 +1,448 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { useState } from "react";
 
-gsap.registerPlugin(ScrollTrigger);
+const TABS = ["General Inquiry", "Car Rental", "Car + Hotel", "Ultimate Package"] as const;
+type Tab = typeof TABS[number];
 
-/* ── 3D Ticket Stamp ── */
-function TicketStamp() {
-  const meshRef = useRef<THREE.Mesh>(null!);
-  const stampRef = useRef<THREE.Mesh>(null!);
-  const t = useRef(0);
+const inputCls = "w-full rounded-xl px-4 py-2.5 text-sm outline-none border transition-colors bg-white";
+const inputStyle = { border: "1px solid #D3D1C7", color: "#1F2A28" };
+const labelCls = "block text-sm font-semibold mb-1.5";
 
-  useFrame((_, delta) => {
-    t.current += delta;
-    meshRef.current.rotation.y = Math.sin(t.current) * 0.3;
-    stampRef.current.position.y = Math.max(-0.5, 1.5 - t.current * 3);
-  });
-
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <>
-      <ambientLight intensity={2} color="#ffffff" />
-      <directionalLight position={[3, 5, 3]} color="#bfdbfe" intensity={2} />
-      <pointLight position={[0, 3, 2]} color="#1d4ed8" intensity={3} />
-      <mesh ref={meshRef} position={[0, 0, 0]}>
-        <boxGeometry args={[3, 1.5, 0.06]} />
-        <meshStandardMaterial color="#eff6ff" metalness={0.1} roughness={0.5} />
-      </mesh>
-      <mesh position={[0, 0, 0.04]}>
-        <boxGeometry args={[2.8, 1.3, 0.01]} />
-        <meshStandardMaterial color="#1d4ed8" metalness={0.5} roughness={0.2} wireframe />
-      </mesh>
-      <mesh ref={stampRef} position={[0, 1.5, 0.1]}>
-        <cylinderGeometry args={[0.4, 0.4, 0.15, 32]} />
-        <meshStandardMaterial color="#059669" metalness={0.6} roughness={0.2} />
-      </mesh>
-    </>
+    <div>
+      <label className={labelCls} style={{ color: "#1F2A28" }}>{label}</label>
+      {children}
+    </div>
   );
 }
 
-type FormData = {
-  name: string; phone: string; email: string; destination: string;
-  adults: string; kids: string; service: string; car: string;
-  hotelStar: string; hotelRoom: string; dateFrom: string; dateTo: string; message: string;
-};
-
-const INIT: FormData = {
-  name: "", phone: "", email: "", destination: "", adults: "1", kids: "0",
-  service: "", car: "", hotelStar: "", hotelRoom: "", dateFrom: "", dateTo: "", message: "",
-};
-
-interface BookingFormProps {
-  preselect?: string;
+function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <input {...props} className={inputCls} style={inputStyle}
+      onFocus={e => (e.currentTarget.style.borderColor = "#0F6E56")}
+      onBlur={e => (e.currentTarget.style.borderColor = "#D3D1C7")} />
+  );
 }
 
-export default function BookingForm({ preselect }: BookingFormProps) {
-  const [form, setForm] = useState<FormData>({ ...INIT, service: preselect ?? "" });
-  const [today, setToday] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+function Select({ children, ...props }: React.SelectHTMLAttributes<HTMLSelectElement>) {
+  return (
+    <select {...props} className={inputCls} style={inputStyle}
+      onFocus={e => (e.currentTarget.style.borderColor = "#0F6E56")}
+      onBlur={e => (e.currentTarget.style.borderColor = "#D3D1C7")}>
+      {children}
+    </select>
+  );
+}
 
-  useEffect(() => {
-    setToday(new Date().toISOString().split("T")[0]);
-  }, []);
+function SubmitBtn({ label, loading }: { label: string; loading: boolean }) {
+  return (
+    <button type="submit" disabled={loading}
+      className="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all disabled:opacity-60"
+      style={{ background: "linear-gradient(135deg, #0F6E56, #1D9E75)" }}>
+      {loading ? "Sending..." : label}
+    </button>
+  );
+}
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(".form-card", { opacity: 0, y: 60 }, {
-        opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
-        scrollTrigger: { trigger: ".form-card", start: "top 80%" },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+function SuccessMsg({ onReset }: { onReset: () => void }) {
+  return (
+    <div className="text-center py-10">
+      <div className="text-5xl mb-4">🎉</div>
+      <h3 className="text-xl font-bold mb-2" style={{ color: "#0F6E56" }}>Request Sent!</h3>
+      <p className="text-sm mb-2" style={{ color: "#5F5E5A" }}>Our team will contact you on WhatsApp within 2 hours.</p>
+      <p className="text-xs mb-6" style={{ color: "#9CA3AF" }}>Check your email for a confirmation with your submission details.</p>
+      <button onClick={onReset} className="px-6 py-2.5 rounded-xl text-white text-sm font-semibold"
+        style={{ background: "#0F6E56" }}>Submit Another</button>
+    </div>
+  );
+}
 
-  // Listen for service pre-selection from service cards (homepage)
-  useEffect(() => {
-    const select = document.getElementById("service-select") as HTMLSelectElement;
-    if (!select) return;
-    const handler = () => setForm((f) => ({ ...f, service: select.value }));
-    select.addEventListener("change", handler);
-    return () => select.removeEventListener("change", handler);
-  }, []);
+async function submitForm(data: Record<string, string | string[]>) {
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return res.ok;
+}
 
-  const set = (k: keyof FormData) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-      setForm((f) => ({ ...f, [k]: e.target.value }));
+/* ── Form 1: General Inquiry ── */
+function GeneralForm() {
+  const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  if (done) return <SuccessMsg onReset={() => setDone(false)} />;
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    gsap.fromTo(".success-box", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" });
+    setLoading(true);
+    const f = new FormData(e.currentTarget);
+    await submitForm({
+      formType: "general-inquiry",
+      name: f.get("name") as string,
+      whatsapp: f.get("whatsapp") as string,
+      email: f.get("email") as string,
+      lookingFor: f.get("lookingFor") as string,
+      destination: f.get("destination") as string,
+      travelDate: f.get("travelDate") as string,
+      message: f.get("message") as string,
+    });
+    setLoading(false);
+    setDone(true);
   };
 
-  const showHotel = form.service === "car-hotel" || form.service === "full-package";
+  return (
+    <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <Field label="Full Name *"><Input required name="name" placeholder="Your full name" /></Field>
+      <Field label="WhatsApp Number *"><Input required type="tel" name="whatsapp" placeholder="+91 XXXXX XXXXX" /></Field>
+      <Field label="Email ID *"><Input required type="email" name="email" placeholder="you@example.com" /></Field>
+      <Field label="I am looking for *">
+        <Select required name="lookingFor" defaultValue="">
+          <option value="" disabled>Select service</option>
+          <option>Car Rental Only</option>
+          <option>Car + Hotel Package</option>
+          <option>Ultimate Holiday</option>
+          <option>Just Need Information</option>
+        </Select>
+      </Field>
+      <Field label="Destination / Place to Visit *"><Input required name="destination" placeholder="e.g. Darjeeling, Digha..." /></Field>
+      <Field label="Approximate Travel Date *"><Input required type="date" name="travelDate" /></Field>
+      <div className="sm:col-span-2">
+        <Field label="Special Message / Requirement">
+          <textarea name="message" rows={3} placeholder="Any special requirements (optional)"
+            className={inputCls + " resize-none"} style={inputStyle}
+            onFocus={e => (e.currentTarget.style.borderColor = "#0F6E56")}
+            onBlur={e => (e.currentTarget.style.borderColor = "#D3D1C7")} />
+        </Field>
+      </div>
+      <div className="sm:col-span-2"><SubmitBtn label="Send Inquiry / Request Call Back" loading={loading} /></div>
+    </form>
+  );
+}
+
+/* ── Form 2: Car Rental ── */
+function CarRentalForm() {
+  const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  if (done) return <SuccessMsg onReset={() => setDone(false)} />;
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    const f = new FormData(e.currentTarget);
+    await submitForm({
+      formType: "car-rental",
+      name: f.get("name") as string,
+      whatsapp: f.get("whatsapp") as string,
+      email: f.get("email") as string,
+      tripType: f.get("tripType") as string,
+      pickupLocation: f.get("pickupLocation") as string,
+      dropLocation: f.get("dropLocation") as string,
+      destination: f.get("destination") as string,
+      pickupDate: f.get("pickupDate") as string,
+      pickupTime: f.get("pickupTime") as string,
+      duration: f.get("duration") as string,
+      carType: f.get("carType") as string,
+      adults: f.get("adults") as string,
+      kids: f.get("kids") as string,
+    });
+    setLoading(false);
+    setDone(true);
+  };
 
   return (
-    <section id="booking" ref={sectionRef} className="py-28 px-6 bg-white">
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0F6E56" }}>Personal Details</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Field label="Name *"><Input required name="name" placeholder="Full name" /></Field>
+        <Field label="WhatsApp No *"><Input required type="tel" name="whatsapp" placeholder="+91 XXXXX XXXXX" /></Field>
+        <Field label="Email *"><Input required type="email" name="email" placeholder="you@example.com" /></Field>
+      </div>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Trip Details</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="sm:col-span-3">
+          <Field label="Trip Type *">
+            <div className="flex flex-wrap gap-4 mt-1">
+              {["One-Way", "Round Trip (Up & Down)", "Kolkata Local Package"].map(v => (
+                <label key={v} className="flex items-center gap-2 text-sm cursor-pointer" style={{ color: "#1F2A28" }}>
+                  <input type="radio" name="tripType" value={v} required className="accent-[#0F6E56]" /> {v}
+                </label>
+              ))}
+            </div>
+          </Field>
+        </div>
+        <Field label="Pickup Location *"><Input required name="pickupLocation" placeholder="Pickup address" /></Field>
+        <Field label="Drop Location *"><Input required name="dropLocation" placeholder="Drop address" /></Field>
+        <Field label="Package / Destination *"><Input required name="destination" placeholder="e.g. Darjeeling, Digha" /></Field>
+        <Field label="Pickup Date *"><Input required type="date" name="pickupDate" /></Field>
+        <Field label="Pickup Time *"><Input required type="time" name="pickupTime" /></Field>
+        <Field label="Duration *">
+          <Select required name="duration" defaultValue="">
+            <option value="" disabled>Select duration</option>
+            <option>8 Hrs (Local)</option><option>10 Hrs</option><option>12 Hrs</option>
+            <option>2 Days</option><option>3 Days</option><option>4 Days</option><option>5+ Days</option>
+          </Select>
+        </Field>
+      </div>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Vehicle & Passenger Details</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Field label="Preferred Car Type *">
+          <Select required name="carType" defaultValue="">
+            <option value="" disabled>Select car</option>
+            <option>Swift Dzire (4 Seater)</option>
+            <option>Ertiga (6 Seater)</option>
+            <option>Innova Crysta (7 Seater)</option>
+            <option>Tempo Traveller</option>
+            <option>Mini Bus</option>
+          </Select>
+        </Field>
+        <Field label="No. of Adults *"><Input required type="number" name="adults" min="1" defaultValue="1" /></Field>
+        <Field label="No. of Kids (Below 10 yrs)"><Input type="number" name="kids" min="0" defaultValue="0" /></Field>
+      </div>
+      <SubmitBtn label="Get Car Rental Quote" loading={loading} />
+    </form>
+  );
+}
+
+/* ── Form 3: Car + Hotel ── */
+function CarHotelForm() {
+  const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  if (done) return <SuccessMsg onReset={() => setDone(false)} />;
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    const f = new FormData(e.currentTarget);
+    await submitForm({
+      formType: "car-hotel",
+      name: f.get("name") as string,
+      whatsapp: f.get("whatsapp") as string,
+      email: f.get("email") as string,
+      destination: f.get("destination") as string,
+      checkIn: f.get("checkIn") as string,
+      checkOut: f.get("checkOut") as string,
+      duration: f.get("duration") as string,
+      adults: f.get("adults") as string,
+      kids: f.get("kids") as string,
+      rooms: f.get("rooms") as string,
+      roomType: f.get("roomType") as string,
+      hotelCategory: f.get("hotelCategory") as string,
+      carPreference: f.get("carPreference") as string,
+    });
+    setLoading(false);
+    setDone(true);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0F6E56" }}>Personal Details</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Field label="Name *"><Input required name="name" placeholder="Full name" /></Field>
+        <Field label="WhatsApp No *"><Input required type="tel" name="whatsapp" placeholder="+91 XXXXX XXXXX" /></Field>
+        <Field label="Email *"><Input required type="email" name="email" placeholder="you@example.com" /></Field>
+      </div>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Travel & Destination Details</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Field label="Package / Destination *"><Input required name="destination" placeholder="e.g. Darjeeling, Sundarbans" /></Field>
+        <Field label="Check-in Date *"><Input required type="date" name="checkIn" /></Field>
+        <Field label="Check-out Date *"><Input required type="date" name="checkOut" /></Field>
+        <Field label="Total Duration of Stay *">
+          <Select required name="duration" defaultValue="">
+            <option value="" disabled>Select duration</option>
+            <option>1 Night 2 Days</option><option>2 Nights 3 Days</option>
+            <option>3 Nights 4 Days</option><option>4 Nights 5 Days</option><option>Custom</option>
+          </Select>
+        </Field>
+      </div>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Hotel & Passenger Requirements</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Field label="No. of Adults *"><Input required type="number" name="adults" min="1" defaultValue="1" /></Field>
+        <Field label="No. of Kids"><Input type="number" name="kids" min="0" defaultValue="0" /></Field>
+        <Field label="Number of Rooms *">
+          <Select required name="rooms" defaultValue="">
+            <option value="" disabled>Select rooms</option>
+            <option>1</option><option>2</option><option>3</option><option>4+</option>
+          </Select>
+        </Field>
+        <Field label="Room Type *">
+          <Select required name="roomType" defaultValue="">
+            <option value="" disabled>Select type</option>
+            <option>AC</option><option>Non-AC</option>
+          </Select>
+        </Field>
+        <Field label="Hotel Category *">
+          <Select required name="hotelCategory" defaultValue="">
+            <option value="" disabled>Select category</option>
+            <option>2-Star (Budget)</option><option>3-Star (Standard)</option>
+            <option>4-Star (Premium)</option><option>5-Star (Luxury)</option>
+            <option>Authentic Homestay</option>
+          </Select>
+        </Field>
+        <Field label="Car Preference *">
+          <Select required name="carPreference" defaultValue="">
+            <option value="" disabled>Select car</option>
+            <option>Sedan (Dzire)</option>
+            <option>SUV (Ertiga / Innova)</option>
+            <option>Large Group Vehicle</option>
+          </Select>
+        </Field>
+      </div>
+      <SubmitBtn label="Get Package Price" loading={loading} />
+    </form>
+  );
+}
+
+/* ── Form 4: Ultimate Package ── */
+function UltimateForm() {
+  const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [addons, setAddons] = useState<string[]>([]);
+  const toggle = (v: string) =>
+    setAddons(prev => prev.includes(v) ? prev.filter(x => x !== v) : [...prev, v]);
+
+  if (done) return <SuccessMsg onReset={() => { setDone(false); setAddons([]); }} />;
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    const f = new FormData(e.currentTarget);
+    await submitForm({
+      formType: "ultimate-package",
+      name: f.get("name") as string,
+      whatsapp: f.get("whatsapp") as string,
+      email: f.get("email") as string,
+      destination: f.get("destination") as string,
+      travelFrom: f.get("travelFrom") as string,
+      travelTo: f.get("travelTo") as string,
+      adults: f.get("adults") as string,
+      kids: f.get("kids") as string,
+      seniorCitizens: f.get("seniorCitizens") as string,
+      arrivalMode: f.get("arrivalMode") as string,
+      hotelPreference: f.get("hotelPreference") as string,
+      mealPlan: f.get("mealPlan") as string,
+      foodPreference: f.get("foodPreference") as string,
+      specialAddons: addons,
+    });
+    setLoading(false);
+    setDone(true);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0F6E56" }}>Primary Details</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Field label="Name *"><Input required name="name" placeholder="Full name" /></Field>
+        <Field label="WhatsApp No *"><Input required type="tel" name="whatsapp" placeholder="+91 XXXXX XXXXX" /></Field>
+        <Field label="Email *"><Input required type="email" name="email" placeholder="you@example.com" /></Field>
+      </div>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>The Journey Details</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Field label="Dream Destination *"><Input required name="destination" placeholder="Where do you want to go?" /></Field>
+        <Field label="Travel From *"><Input required type="date" name="travelFrom" /></Field>
+        <Field label="Travel To *"><Input required type="date" name="travelTo" /></Field>
+        <Field label="No. of Adults *"><Input required type="number" name="adults" min="1" defaultValue="1" /></Field>
+        <Field label="No. of Kids"><Input type="number" name="kids" min="0" defaultValue="0" /></Field>
+        <Field label="Senior Citizens (60+)"><Input type="number" name="seniorCitizens" min="0" defaultValue="0" /></Field>
+      </div>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Experience Preferences</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Field label="Arrival Mode *">
+          <Select required name="arrivalMode" defaultValue="">
+            <option value="" disabled>Select arrival mode</option>
+            <option>Flight</option><option>Train</option><option>Need Home Pickup</option>
+          </Select>
+        </Field>
+        <Field label="Hotel Preference *">
+          <Select required name="hotelPreference" defaultValue="">
+            <option value="" disabled>Select hotel type</option>
+            <option>2-Star (Budget)</option>
+            <option>3-Star (Standard)</option>
+            <option>4-Star Premium</option>
+            <option>5-Star Luxury</option>
+            <option>Heritage Property (e.g. Rajbari)</option>
+          </Select>
+        </Field>
+        <Field label="Meal Plan *">
+          <Select required name="mealPlan" defaultValue="">
+            <option value="" disabled>Select meal plan</option>
+            <option>Breakfast Only</option><option>Breakfast + Dinner</option><option>All Meals Included</option>
+          </Select>
+        </Field>
+        <Field label="Food Preference *">
+          <Select required name="foodPreference" defaultValue="">
+            <option value="" disabled>Select preference</option>
+            <option>Veg</option><option>Non-Veg</option><option>Jain Food</option>
+          </Select>
+        </Field>
+      </div>
+      <div>
+        <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#0F6E56" }}>Special Add-ons</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {[
+            "Professional Tour Guide Required",
+            "Special Decoration (Birthday / Anniversary / Honeymoon)",
+            "Wheelchair Assistance Required",
+            "Adventure Activities / Safari Booking",
+          ].map(v => (
+            <label key={v} className="flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all text-sm"
+              style={{
+                borderColor: addons.includes(v) ? "#0F6E56" : "#D3D1C7",
+                background: addons.includes(v) ? "#E1F5EE" : "#fff",
+                color: "#1F2A28",
+              }}>
+              <input type="checkbox" checked={addons.includes(v)} onChange={() => toggle(v)}
+                className="accent-[#0F6E56] w-4 h-4 flex-shrink-0" />
+              {v}
+            </label>
+          ))}
+        </div>
+      </div>
+      <SubmitBtn label="✨ Design My Ultimate Trip" loading={loading} />
+    </form>
+  );
+}
+
+/* ── Main Component ── */
+export default function BookingForm() {
+  const [active, setActive] = useState<Tab>("General Inquiry");
+
+  return (
+    <section id="booking" className="py-16 sm:py-24 px-4" style={{ background: "#F7FAF9" }}>
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-14">
-          <span className="badge badge-blue mb-4">Start Your Journey</span>
-          <h2 className="section-title mt-4 mb-4">
-            Book Your <span className="accent-blue">Dream Trip</span>
+        <div className="text-center mb-10">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3"
+            style={{ background: "#E1F5EE", color: "#0F6E56" }}>Book Your Trip</span>
+          <h2 className="text-3xl sm:text-4xl font-black mb-3" style={{ color: "#1F2A28" }}>
+            Plan Your <span style={{ color: "#0F6E56" }}>Perfect Journey</span>
           </h2>
-          <p className="text-slate-500 text-lg">Fill in the details and we'll craft the perfect itinerary for you.</p>
+          <p className="text-sm" style={{ color: "#5F5E5A" }}>Choose your service and fill in the details — we'll handle the rest.</p>
         </div>
 
-        {submitted ? (
-          <div className="success-box card bg-gradient-to-br from-blue-50 to-emerald-50 border-blue-100 p-12 text-center">
-            <div className="h-48 mb-6">
-              <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-                <TicketStamp />
-              </Canvas>
-            </div>
-            <h3 className="text-2xl font-bold accent-blue mb-3">Booking Request Sent! 🎉</h3>
-            <p className="text-slate-500 mb-8">
-              Thank you! Our team will contact you within 2 hours to confirm your trip details.
-            </p>
-            <button onClick={() => { setSubmitted(false); setForm(INIT); }} className="btn-primary">
-              Plan Another Trip
+        {/* Tab Bar */}
+        <div className="flex overflow-x-auto rounded-2xl p-1 mb-8 gap-1" style={{ background: "#E1F5EE" }}>
+          {TABS.map(tab => (
+            <button key={tab} onClick={() => setActive(tab)}
+              className="flex-1 min-w-max px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap"
+              style={{
+                background: active === tab ? "#0F6E56" : "transparent",
+                color: active === tab ? "#fff" : "#0F6E56",
+              }}>
+              {tab}
             </button>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="form-card card bg-white p-8 md:p-12 space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name *</label>
-                <input required className="input-field" placeholder="Your full name" value={form.name} onChange={set("name")} />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Contact Number *</label>
-                <input required type="tel" className="input-field" placeholder="+91 XXXXX XXXXX" value={form.phone} onChange={set("phone")} />
-              </div>
-            </div>
+          ))}
+        </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address *</label>
-                <input required type="email" className="input-field" placeholder="you@example.com" value={form.email} onChange={set("email")} />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Destination *</label>
-                <input required className="input-field" placeholder="Where do you want to explore?" value={form.destination} onChange={set("destination")} />
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Adults *</label>
-                <input required type="number" min="1" className="input-field" value={form.adults} onChange={set("adults")} />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Kids</label>
-                <input type="number" min="0" className="input-field" value={form.kids} onChange={set("kids")} />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Choose Service *</label>
-                <select id="service-select" required className="input-field" value={form.service} onChange={set("service")}>
-                  <option value="">Select a package</option>
-                  <option value="car-only">Car Rental Only</option>
-                  <option value="car-hotel">Car + Hotel Package</option>
-                  <option value="full-package">The Ultimate Package</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Car Preference</label>
-                <select className="input-field" value={form.car} onChange={set("car")}>
-                  <option value="">Select car type</option>
-                  <option value="sedan">Sedan</option>
-                  <option value="suv">SUV</option>
-                  <option value="luxury">Luxury</option>
-                </select>
-              </div>
-              {showHotel && (
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">Hotel Star Rating</label>
-                  <select className="input-field" value={form.hotelStar} onChange={set("hotelStar")}>
-                    <option value="">Select star rating</option>
-                    <option value="2">2 Star</option>
-                    <option value="3">3 Star</option>
-                    <option value="4">4 Star</option>
-                    <option value="5">5 Star</option>
-                  </select>
-                </div>
-              )}
-            </div>
-
-            {showHotel && (
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Room Type</label>
-                <select className="input-field" value={form.hotelRoom} onChange={set("hotelRoom")}>
-                  <option value="">Select room type</option>
-                  <option value="standard">Standard</option>
-                  <option value="deluxe">Deluxe</option>
-                  <option value="luxury">Luxury</option>
-                </select>
-              </div>
-            )}
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Travel From *</label>
-                <input required type="date" className="input-field" value={form.dateFrom} onChange={set("dateFrom")} min={today} />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Travel To *</label>
-                <input required type="date" className="input-field" value={form.dateTo} onChange={set("dateTo")} min={form.dateFrom || today} />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">Special Requests / Message</label>
-              <textarea rows={4} className="input-field resize-none" placeholder="Any special requirements, preferences, or questions..."
-                value={form.message} onChange={set("message")} />
-            </div>
-
-            <button type="submit" className="btn-primary w-full text-center text-base py-4">
-              🚀 Submit Booking Request
-            </button>
-          </form>
-        )}
+        {/* Form Card */}
+        <div className="rounded-2xl border p-5 sm:p-8" style={{ background: "#fff", borderColor: "#D3D1C7" }}>
+          {active === "General Inquiry" && <GeneralForm />}
+          {active === "Car Rental" && <CarRentalForm />}
+          {active === "Car + Hotel" && <CarHotelForm />}
+          {active === "Ultimate Package" && <UltimateForm />}
+        </div>
       </div>
     </section>
   );

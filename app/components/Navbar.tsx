@@ -123,12 +123,12 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="tel:+919999999999"
+          <a href="tel:+918910794830"
             className="text-sm font-semibold flex items-center gap-1.5 transition-colors"
             style={{ color: "#5F5E5A" }}
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#0F6E56"}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#5F5E5A"}>
-            <span>📞</span> +91 99999 99999
+            <span>📞</span> +91 89107 94830
           </a>
           <Link href="/#booking" className="btn-primary text-sm py-2.5 px-5">
             Plan My Trip
@@ -186,8 +186,8 @@ export default function Navbar() {
             className="text-sm font-medium py-2.5 px-3 rounded-lg" style={{ color: "#5F5E5A" }}>Contact</Link>
 
           <div className="pt-3 mt-2 flex flex-col gap-2" style={{ borderTop: "1px solid #D3D1C7" }}>
-            <a href="tel:+919999999999" className="text-sm font-semibold py-2 px-3" style={{ color: "#5F5E5A" }}>
-              📞 +91 99999 99999
+            <a href="tel:+918910794830" className="text-sm font-semibold py-2 px-3" style={{ color: "#5F5E5A" }}>
+              📞 +91 89107 94830
             </a>
             <Link href="/#booking" onClick={() => setOpen(false)} className="btn-primary text-sm text-center">
               Plan My Trip

@@ -17,6 +17,7 @@ export interface ServicePageConfig {
   ctaLabel: string;
   ctaService: string;
   ctaClass: string;
+  formSection?: { heading: string; subheading: string; form: React.ReactNode };
   whatWeOffer: {
     heading: string;
     points: { icon: string; title: string; desc: string }[];
@@ -175,6 +176,22 @@ export default function ServicePageLayout({ config }: { config: ServicePageConfi
             </div>
           </div>
         </section>
+
+        {/* ── Booking Form ── */}
+        {config.formSection && (
+          <section id="booking-form" className="py-20 px-6 scroll-mt-20" style={{ background: "#F7FAF9" }}>
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-8">
+                <span className={`badge ${config.badgeClass} mb-3`}>Book Now</span>
+                <h2 className="section-title mb-2">{config.formSection.heading}</h2>
+                <p className="text-slate-500">{config.formSection.subheading}</p>
+              </div>
+              <div className="rounded-2xl border p-5 sm:p-8" style={{ background: "#fff", borderColor: "#D3D1C7" }}>
+                {config.formSection.form}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── FAQ ── */}
         <section
