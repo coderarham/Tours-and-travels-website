@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { google } from "googleapis";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -29,6 +30,67 @@ const FORM_LABELS: Record<string, string> = {
   "car-hotel": "Car + Hotel Package",
   "ultimate-package": "Ultimate Package",
 };
+
+// Headers for each form type sheet tab
+const SHEET_HEADERS: Record<string, string[]> = {
+  "general-inquiry": ["Timestamp", "Name", "Email", "WhatsApp", "Destination", "Travel Date", "No. of Travelers", "Message"],
+  "car-rental":      ["Timestamp", "Name", "Email", "WhatsApp", "Pickup Location", "Pickup Date", "Pickup Time", "Drop Location", "Drop Date", "Drop Time", "Car Type", "Trip Type", "No. of Passengers", "Special Requests"],
+  "car-hotel":       ["Timestamp", "Name", "Email", "WhatsApp", "Pickup Location", "Pickup Date", "Pickup Time", "Drop Location", "Drop Date", "Drop Time", "Destination", "Check-in Date", "Check-out Date", "Hotel Preference", "No. of Rooms", "No. of Guests", "Car Type", "Special Requests"],
+  "ultimate-package":["Timestamp", "Name", "Email", "WhatsApp", "Destination", "Travel Date", "Return Date", "No. of Travelers", "Hotel Preference", "Car Type", "Special Requests"],
+};
+
+const SHEET_TAB_NAMES: Record<string, string> = {
+  "general-inquiry": "General Inquiry",
+  "car-rental":      "Car Rental",
+  "car-hotel":       "Car + Hotel",
+  "ultimate-package":"Ultimate Package",
+};
+
+async function appendToSheet(formType: string, data: Record<string, string | string[]>) {
+  try {
+    const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON || "{}");
+    const auth = new google.auth.GoogleAuth({
+      credentials,
+      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+    });
+    const sheets = google.sheets({ version: "v4", auth });
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID!;
+    const tabName = SHEET_TAB_NAMES[formType] ?? formType;
+    const headers = SHEET_HEADERS[formType] ?? ["Timestamp", ...Object.keys(data)];
+
+    // Get all sheet tabs
+    const meta = await sheets.spreadsheets.get({ spreadsheetId });
+    const existingSheets = meta.data.sheets?.map(s => s.properties?.title) ?? [];
+
+    // Create tab if it doesn't exist
+    if (!existingSheets.includes(tabName)) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        requestBody: { requests: [{ addSheet: { properties: { title: tabName } } }] },
+      });
+      // Add headers to new tab
+      await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: `${tabName}!A1`,
+        valueInputOption: "USER_ENTERED",
+        requestBody: { values: [headers] },
+      });
+    }
+
+    // Append data row
+    const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    const values = Object.values(data).map(v => (Array.isArray(v) ? v.join(", ") : v ?? ""));
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: `${tabName}!A1`,
+      valueInputOption: "USER_ENTERED",
+      requestBody: { values: [[timestamp, ...values]] },
+    });
+  } catch (err) {
+    console.error("Sheets error:", err);
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -79,6 +141,9 @@ export async function POST(req: NextRequest) {
           <p style="color:#9CA3AF;font-size:12px;margin-top:24px">MakeMyWay · Kolkata, West Bengal · makemyway.official@gmail.com</p>
         </div>
       </div>`;
+
+    // Append to Google Sheet (non-blocking)
+    await appendToSheet(formLabel, allFields);
 
     await transporter.sendMail({
       from: `"MakeMyWay Website" <${process.env.GMAIL_USER}>`,
