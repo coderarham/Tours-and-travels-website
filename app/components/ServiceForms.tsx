@@ -15,17 +15,45 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
+  const isPhone = props.type === "tel" || props.name === "whatsapp";
+  const isNumber = props.type === "number";
+
   return (
-    <input {...props} className={inputCls} style={inputStyle}
-      onFocus={e => (e.currentTarget.style.borderColor = "#0F6E56")}
-      onBlur={e => (e.currentTarget.style.borderColor = "#D3D1C7")} />
+    <input
+      {...props}
+      inputMode={isPhone || isNumber ? "numeric" : props.inputMode}
+      pattern={isPhone ? "[0-9]{10}" : props.pattern}
+      maxLength={isPhone ? (props.maxLength ?? 10) : props.maxLength}
+      placeholder={isPhone ? (props.placeholder || "10-digit number (e.g. 9876543210)") : props.placeholder}
+      className={inputCls}
+      style={inputStyle}
+      onKeyDown={e => {
+        if (isPhone) {
+          const allowedKeys = ["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Enter"];
+          if (!allowedKeys.includes(e.key) && !/^\d$/.test(e.key) && !e.ctrlKey && !e.metaKey) {
+            e.preventDefault();
+          }
+        }
+        if (props.onKeyDown) props.onKeyDown(e);
+      }}
+      onInput={e => {
+        if (isPhone) {
+          e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "").slice(0, 10);
+        } else if (isNumber) {
+          e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
+        }
+        if (props.onInput) props.onInput(e);
+      }}
+      onFocus={e => (e.currentTarget.style.borderColor = "#1B3A6B")}
+      onBlur={e => (e.currentTarget.style.borderColor = "#D3D1C7")}
+    />
   );
 }
 
 function Select({ children, ...props }: React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <select {...props} className={inputCls} style={inputStyle}
-      onFocus={e => (e.currentTarget.style.borderColor = "#0F6E56")}
+      onFocus={e => (e.currentTarget.style.borderColor = "#1B3A6B")}
       onBlur={e => (e.currentTarget.style.borderColor = "#D3D1C7")}>
       {children}
     </select>
@@ -35,8 +63,8 @@ function Select({ children, ...props }: React.SelectHTMLAttributes<HTMLSelectEle
 function SubmitBtn({ label, loading }: { label: string; loading: boolean }) {
   return (
     <button type="submit" disabled={loading}
-      className="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all disabled:opacity-60"
-      style={{ background: "linear-gradient(135deg, #0F6E56, #1D9E75)" }}>
+      className="w-full py-3.5 rounded-xl text-white font-bold text-sm transition-all disabled:opacity-60 shadow-md hover:shadow-lg"
+      style={{ background: "linear-gradient(135deg, #1B3A6B, #F28C28)" }}>
       {loading ? "Sending..." : label}
     </button>
   );
@@ -46,11 +74,11 @@ function SuccessMsg({ onReset }: { onReset: () => void }) {
   return (
     <div className="text-center py-10">
       <div className="text-5xl mb-4">🎉</div>
-      <h3 className="text-xl font-bold mb-2" style={{ color: "#0F6E56" }}>Request Sent!</h3>
+      <h3 className="text-xl font-bold mb-2" style={{ color: "#1B3A6B" }}>Request Sent!</h3>
       <p className="text-sm mb-2" style={{ color: "#5F5E5A" }}>Our team will contact you on WhatsApp within 2 hours.</p>
       <p className="text-xs mb-6" style={{ color: "#9CA3AF" }}>Check your email for a confirmation with your submission details.</p>
       <button onClick={onReset} className="px-6 py-2.5 rounded-xl text-white text-sm font-semibold"
-        style={{ background: "#0F6E56" }}>Submit Another</button>
+        style={{ background: "#1B3A6B" }}>Submit Another</button>
     </div>
   );
 }
@@ -97,21 +125,21 @@ export function CarRentalForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0F6E56" }}>Personal Details</p>
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#1B3A6B" }}>Personal Details</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Field label="Name *"><Input required name="name" placeholder="Full name" /></Field>
-        <Field label="WhatsApp No *"><Input required type="tel" name="whatsapp" placeholder="+91 XXXXX XXXXX" /></Field>
+        <Field label="WhatsApp No *"><Input required type="tel" name="whatsapp" placeholder="10-digit number (e.g. 9876543210)" /></Field>
         <Field label="Email *"><Input required type="email" name="email" placeholder="you@example.com" /></Field>
       </div>
 
-      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Trip Details</p>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#1B3A6B" }}>Trip Details</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="sm:col-span-3">
           <Field label="Trip Type *">
             <div className="flex flex-wrap gap-4 mt-1">
               {["One-Way", "Round Trip (Up & Down)", "Kolkata Local Package"].map(v => (
                 <label key={v} className="flex items-center gap-2 text-sm cursor-pointer" style={{ color: "#1F2A28" }}>
-                  <input type="radio" name="tripType" value={v} required className="accent-[#0F6E56]" /> {v}
+                  <input type="radio" name="tripType" value={v} required className="accent-[#1B3A6B]" /> {v}
                 </label>
               ))}
             </div>
@@ -136,7 +164,7 @@ export function CarRentalForm() {
         </Field>
       </div>
 
-      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Vehicle & Passenger Details</p>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#1B3A6B" }}>Vehicle & Passenger Details</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Field label="Preferred Car Type *">
           <Select required name="carType" defaultValue="">
@@ -189,14 +217,14 @@ export function CarHotelForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0F6E56" }}>Personal Details</p>
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#1B3A6B" }}>Personal Details</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Field label="Name *"><Input required name="name" placeholder="Full name" /></Field>
-        <Field label="WhatsApp No *"><Input required type="tel" name="whatsapp" placeholder="+91 XXXXX XXXXX" /></Field>
+        <Field label="WhatsApp No *"><Input required type="tel" name="whatsapp" placeholder="10-digit number (e.g. 9876543210)" /></Field>
         <Field label="Email *"><Input required type="email" name="email" placeholder="you@example.com" /></Field>
       </div>
 
-      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Travel & Destination Details</p>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#1B3A6B" }}>Travel & Destination Details</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Field label="Package / Destination *"><Input required name="destination" placeholder="e.g. Darjeeling, Sundarbans" /></Field>
         <Field label="Check-in Date *"><Input required type="date" name="checkIn" /></Field>
@@ -213,7 +241,7 @@ export function CarHotelForm() {
         </Field>
       </div>
 
-      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Hotel & Passenger Requirements</p>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#1B3A6B" }}>Hotel & Passenger Requirements</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Field label="No. of Adults *"><Input required type="number" name="adults" min="1" defaultValue="1" /></Field>
         <Field label="No. of Kids"><Input type="number" name="kids" min="0" defaultValue="0" /></Field>
@@ -291,14 +319,14 @@ export function UltimateForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#0F6E56" }}>Primary Details</p>
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#1B3A6B" }}>Primary Details</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Field label="Name *"><Input required name="name" placeholder="Full name" /></Field>
-        <Field label="WhatsApp No *"><Input required type="tel" name="whatsapp" placeholder="+91 XXXXX XXXXX" /></Field>
+        <Field label="WhatsApp No *"><Input required type="tel" name="whatsapp" placeholder="10-digit number (e.g. 9876543210)" /></Field>
         <Field label="Email *"><Input required type="email" name="email" placeholder="you@example.com" /></Field>
       </div>
 
-      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>The Journey Details</p>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#1B3A6B" }}>The Journey Details</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Field label="Dream Destination *"><Input required name="destination" placeholder="Where do you want to go?" /></Field>
         <Field label="Travel From *"><Input required type="date" name="travelFrom" /></Field>
@@ -308,7 +336,7 @@ export function UltimateForm() {
         <Field label="Senior Citizens (60+)"><Input type="number" name="seniorCitizens" min="0" defaultValue="0" /></Field>
       </div>
 
-      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#0F6E56" }}>Experience Preferences</p>
+      <p className="text-xs font-bold uppercase tracking-widest pt-1" style={{ color: "#1B3A6B" }}>Experience Preferences</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Field label="Arrival Mode *">
           <Select required name="arrivalMode" defaultValue="">
@@ -347,7 +375,7 @@ export function UltimateForm() {
       </div>
 
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#0F6E56" }}>Special Add-ons</p>
+        <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#1B3A6B" }}>Special Add-ons</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {[
             "Professional Tour Guide Required",
@@ -357,12 +385,12 @@ export function UltimateForm() {
           ].map(v => (
             <label key={v} className="flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all text-sm"
               style={{
-                borderColor: addons.includes(v) ? "#0F6E56" : "#D3D1C7",
-                background: addons.includes(v) ? "#E1F5EE" : "#fff",
+                borderColor: addons.includes(v) ? "#1B3A6B" : "#D3D1C7",
+                background: addons.includes(v) ? "#F0F4FA" : "#fff",
                 color: "#1F2A28",
               }}>
               <input type="checkbox" checked={addons.includes(v)} onChange={() => toggle(v)}
-                className="accent-[#0F6E56] w-4 h-4 flex-shrink-0" />
+                className="accent-[#1B3A6B] w-4 h-4 flex-shrink-0" />
               {v}
             </label>
           ))}

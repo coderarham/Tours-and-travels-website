@@ -2,8 +2,8 @@ import LegalPageLayout from "../components/LegalPageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy – TravelKolkata",
-  description: "How TravelKolkata collects, uses, and protects your personal data.",
+  title: "Privacy Policy – MakeMyWay",
+  description: "How MakeMyWay collects, uses, and protects your personal data.",
 };
 
 export default function PrivacyPage() {

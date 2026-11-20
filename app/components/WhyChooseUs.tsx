@@ -41,17 +41,45 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section id="why" ref={sectionRef} className="section-pad px-6" style={{ background: "#FFFFFF" }}>
-      <div className="max-w-7xl mx-auto">
+    <section id="why" ref={sectionRef} className="relative section-pad px-6 overflow-hidden">
+      {/* Background Image with Parallax */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      />
+      {/* Dark Navy / Slate Overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(180deg, rgba(15,27,45,0.92) 0%, rgba(27,58,107,0.80) 45%, rgba(15,27,45,0.95) 100%)",
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto" style={{ zIndex: 10 }}>
 
         <div className="text-center mb-14">
-          <span className="badge badge-blue mb-4">Why TravelKolkata</span>
-          <h2 className="section-title mb-4">
+          <span
+            className="inline-block mb-4 text-xs font-bold tracking-widest uppercase rounded-full px-4 py-1.5"
+            style={{
+              background: "rgba(242,140,40,0.18)",
+              color: "#F28C28",
+              border: "1px solid rgba(242,140,40,0.4)",
+            }}
+          >
+            Why MakeMyWay
+          </span>
+          <h2 className="section-title mb-4" style={{ color: "#ffffff", textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}>
             The Smarter Way<br />
-            <span style={{ color: "#0F6E56" }}>to Travel Kolkata</span>
+            <span>to Travel </span>
+            <span style={{ color: "#F28C28" }}>Everywhere</span>
           </h2>
-          <p className="section-subtitle">
-            See exactly why thousands of travellers choose us over app-based cabs.
+          <p className="section-subtitle" style={{ color: "rgba(255,255,255,0.75)" }}>
+            See exactly why thousands of travellers choose MakeMyWay over standard app-based cabs.
           </p>
         </div>
 
@@ -60,14 +88,19 @@ export default function WhyChooseUs() {
           {[
             { n: "500+", l: "Happy Travellers", icon: "😊" },
             { n: "50+",  l: "Destinations Covered", icon: "🗺️" },
-            { n: "3",    l: "Service Packages", icon: "📦" },
-            { n: "24/7", l: "Customer Support", icon: "🤝" },
+            { n: "3",    l: "Custom Packages", icon: "📦" },
+            { n: "24/7", l: "Dedicated Support", icon: "🤝" },
           ].map((s) => (
             <div key={s.l} className="stat-item card-flat p-6 text-center"
-              style={{ background: "#E1F5EE", borderColor: "#9FE1CB" }}>
+              style={{
+                background: "rgba(255,255,255,0.08)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.16)",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.25)"
+              }}>
               <div className="text-2xl mb-2">{s.icon}</div>
-              <div className="text-2xl font-black mb-1" style={{ color: "#0F6E56" }}>{s.n}</div>
-              <div className="text-xs font-medium" style={{ color: "#5F5E5A" }}>{s.l}</div>
+              <div className="text-2xl font-black mb-1" style={{ color: "#F28C28" }}>{s.n}</div>
+              <div className="text-xs font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>{s.l}</div>
             </div>
           ))}
         </div>
@@ -76,21 +109,27 @@ export default function WhyChooseUs() {
         <div className="compare-grid grid md:grid-cols-2 gap-6">
 
           {/* Them */}
-          <div className="compare-col card p-8" style={{ background: "#FFF5F5", borderColor: "#FECACA" }}>
+          <div className="compare-col card p-8"
+            style={{
+              background: "rgba(255, 245, 245, 0.96)",
+              backdropFilter: "blur(8px)",
+              borderColor: "#FECACA",
+              boxShadow: "0 8px 30px rgba(0,0,0,0.25)"
+            }}>
             <div className="flex items-center gap-3 mb-7">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
-                style={{ background: "#FEE2E2" }}>😤</div>
+                style={{ background: "#FEE2DC" }}>😤</div>
               <div>
-                <h3 className="font-bold text-lg" style={{ color: "#B91C1C" }}>Ola / Uber / App Cabs</h3>
+                <h3 className="font-bold text-lg" style={{ color: "#DC2626" }}>Ola / Uber / App Cabs</h3>
                 <p className="text-xs font-medium" style={{ color: "#EF4444" }}>What you deal with</p>
               </div>
             </div>
             <ul className="space-y-3.5">
               {them.map((t) => (
-                <li key={t} className="flex items-center gap-3 text-sm" style={{ color: "#5F5E5A" }}>
+                <li key={t} className="flex items-center gap-3 text-sm" style={{ color: "#4B5563" }}>
                   <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: "#FEE2E2" }}>
-                    <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="#EF4444" strokeWidth={3}>
+                    style={{ background: "#FEE2DC" }}>
+                    <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="#DC2626" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </div>
@@ -101,21 +140,30 @@ export default function WhyChooseUs() {
           </div>
 
           {/* Us */}
-          <div className="compare-col card p-8" style={{ background: "#E1F5EE", borderColor: "#9FE1CB" }}>
+          <div className="compare-col card p-8"
+            style={{
+              background: "rgba(255, 255, 255, 0.97)",
+              backdropFilter: "blur(8px)",
+              borderColor: "rgba(255,255,255,0.3)",
+              borderTop: "4px solid #F28C28",
+              boxShadow: "0 8px 30px rgba(0,0,0,0.3)"
+            }}>
             <div className="flex items-center gap-3 mb-7">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
-                style={{ background: "#9FE1CB" }}>✨</div>
+                style={{ background: "#FEF3E2", color: "#F28C28" }}>✨</div>
               <div>
-                <h3 className="font-bold text-lg" style={{ color: "#085041" }}>TravelKolkata</h3>
-                <p className="text-xs font-medium" style={{ color: "#0F6E56" }}>What you get</p>
+                <h3 className="font-bold text-lg" style={{ color: "#1B3A6B" }}>
+                  Make<span style={{ color: "#F28C28" }}>MyWay</span>
+                </h3>
+                <p className="text-xs font-semibold" style={{ color: "#F28C28" }}>What you experience</p>
               </div>
             </div>
             <ul className="space-y-3.5">
               {us.map((u) => (
-                <li key={u} className="flex items-center gap-3 text-sm" style={{ color: "#1F2A28" }}>
+                <li key={u} className="flex items-center gap-3 text-sm font-medium" style={{ color: "#0F1B2D" }}>
                   <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: "#9FE1CB" }}>
-                    <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="#085041" strokeWidth={3}>
+                    style={{ background: "#FEF3E2" }}>
+                    <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="#F28C28" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
@@ -128,7 +176,9 @@ export default function WhyChooseUs() {
         </div>
 
         <div className="mt-12 text-center">
-          <a href="/#booking" className="btn-primary">Book Your Dedicated Car →</a>
+          <a href="/#booking" className="btn-primary" style={{ boxShadow: "0 8px 25px rgba(242,140,40,0.35)" }}>
+            Book Your Dedicated Car →
+          </a>
         </div>
 
       </div>

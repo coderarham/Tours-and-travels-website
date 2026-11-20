@@ -2,8 +2,8 @@ import LegalPageLayout from "../components/LegalPageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions – TravelKolkata",
-  description: "Read our Terms and Conditions of Service for TravelKolkata travel packages.",
+  title: "Terms & Conditions – MakeMyWay",
+  description: "Read our Terms and Conditions of Service for MakeMyWay travel packages.",
 };
 
 export default function TermsPage() {

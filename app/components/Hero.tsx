@@ -51,7 +51,7 @@ export default function Hero() {
       {/* Layer 4: Bottom fade */}
       <div
         className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-        style={{ zIndex: 20, background: "linear-gradient(to top, #f8fafc, transparent)" }}
+        style={{ zIndex: 20, background: "linear-gradient(to top, #FAFBFD, transparent)" }}
       />
 
       {/* Layer 5: Text Content */}
@@ -68,7 +68,7 @@ export default function Hero() {
             }}
           >
             Explore the Unseen.<br />
-            <span style={{ color: "#60a5fa" }}>We Drive,</span> You Experience.
+            <span style={{ color: "#F28C28" }}>We Drive,</span> You Experience.
           </h1>
           <p
             className="hero-sub text-base sm:text-lg text-slate-200 mb-8 leading-relaxed"

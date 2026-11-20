@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const SOCIALS = [
   {
@@ -55,7 +56,7 @@ export default function Footer() {
   useEffect(() => { setYear(String(new Date().getFullYear())); }, []);
 
   return (
-    <footer style={{ background: "#0D1F1B" }}>
+    <footer style={{ background: "#0D1829" }}>
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
@@ -63,30 +64,34 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm"
-                style={{ background: "linear-gradient(135deg, #0F6E56, #1D9E75)" }}>
-                <span className="text-white text-xs font-black">MM</span>
-              </div>
+              <Image
+                src="/logo.jpg"
+                alt="MakeMyWay Logo"
+                width={42}
+                height={42}
+                className="rounded-full shadow-md"
+                style={{ objectFit: "cover" }}
+              />
               <div className="flex flex-col leading-none">
-                <span className="text-base font-black text-white">
-                  Make<span style={{ color: "#5DCAA5" }}>MyWay</span>
+                <span className="text-lg font-black text-white">
+                  Make<span style={{ color: "#F28C28" }}>MyWay</span>
                 </span>
-                <span className="text-[9px] font-medium tracking-widest uppercase" style={{ color: "#4B6B63" }}>
-                  Premium Travel
+                <span className="text-[8px] font-semibold tracking-wider uppercase text-slate-400 mt-0.5">
+                  Explore • Try • Travel
                 </span>
               </div>
             </div>
-            <p className="text-sm leading-relaxed mb-6" style={{ color: "#6B8C84" }}>
-              Premium travel experiences from the City of Joy. Your journey, our passion.
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "#94A3B8" }}>
+              Premium customized travel experiences starting from Kolkata. Your journey, our passion.
             </p>
             <div className="flex gap-2.5 flex-wrap">
               {SOCIALS.map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-all"
-                  style={{ background: "#1A3530", color: "#6B8C84" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#0F6E56"; (e.currentTarget as HTMLElement).style.color = "#fff"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "#1A3530"; (e.currentTarget as HTMLElement).style.color = "#6B8C84"; }}
+                  className="w-9 h-9 rounded-xl flex items-center justify-center transition-all"
+                  style={{ background: "#1B2A44", color: "#94A3B8" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#F28C28"; (e.currentTarget as HTMLElement).style.color = "#fff"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "#1B2A44"; (e.currentTarget as HTMLElement).style.color = "#94A3B8"; }}
                 >
                   {s.svg}
                 </a>
@@ -96,21 +101,23 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#4B6B63" }}>
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#64748B" }}>
               Quick Links
             </h4>
             <ul className="space-y-3">
               {[
                 { label: "Home", href: "/" },
-                { label: "About Us", href: "/about" },
-                { label: "Destinations", href: "/#destinations" },
+                { label: "Our Story", href: "/about" },
+                { label: "Car Rental", href: "/services/car-rental" },
+                { label: "Car + Hotel", href: "/services/car-hotel" },
+                { label: "The Ultimate Package", href: "/services/ultimate-package" },
                 { label: "Why Choose Us", href: "/#why" },
                 { label: "Book Now", href: "/#booking" },
               ].map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href} className="text-sm transition-colors" style={{ color: "#6B8C84" }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#5DCAA5"}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#6B8C84"}>
+                  <Link href={l.href} className="text-sm transition-colors" style={{ color: "#94A3B8" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#F28C28"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#94A3B8"}>
                     {l.label}
                   </Link>
                 </li>
@@ -120,7 +127,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#4B6B63" }}>
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#64748B" }}>
               Legal
             </h4>
             <ul className="space-y-3">
@@ -131,9 +138,9 @@ export default function Footer() {
                 { label: "Refund Policy", href: "/refund" },
               ].map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href} className="text-sm transition-colors" style={{ color: "#6B8C84" }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#5DCAA5"}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#6B8C84"}>
+                  <Link href={l.href} className="text-sm transition-colors" style={{ color: "#94A3B8" }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#F28C28"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#94A3B8"}>
                     {l.label}
                   </Link>
                 </li>
@@ -143,7 +150,7 @@ export default function Footer() {
 
           {/* Contact + Newsletter */}
           <div className="col-span-2 md:col-span-1">
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#4B6B63" }}>
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#64748B" }}>
               Contact Us
             </h4>
             <ul className="space-y-3 mb-7">
@@ -154,13 +161,13 @@ export default function Footer() {
               ].map((c) => (
                 <li key={c.text}>
                   {c.href ? (
-                    <a href={c.href} className="text-sm flex items-center gap-2 transition-colors" style={{ color: "#6B8C84" }}
-                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#5DCAA5"}
-                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#6B8C84"}>
+                    <a href={c.href} className="text-sm flex items-center gap-2 transition-colors" style={{ color: "#94A3B8" }}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#F28C28"}
+                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "#94A3B8"}>
                       <span>{c.icon}</span>{c.text}
                     </a>
                   ) : (
-                    <span className="text-sm flex items-center gap-2" style={{ color: "#6B8C84" }}>
+                    <span className="text-sm flex items-center gap-2" style={{ color: "#94A3B8" }}>
                       <span>{c.icon}</span>{c.text}
                     </span>
                   )}
@@ -168,7 +175,7 @@ export default function Footer() {
               ))}
             </ul>
 
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#4B6B63" }}>
+            <h4 className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#64748B" }}>
               Newsletter
             </h4>
             <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-2">
@@ -176,9 +183,9 @@ export default function Footer() {
                 type="email"
                 placeholder="Your email"
                 className="w-full rounded-xl px-3 py-2.5 text-sm outline-none transition-colors"
-                style={{ background: "#1A3530", border: "1px solid #2A4A44", color: "#fff" }}
-                onFocus={e => (e.currentTarget as HTMLElement).style.borderColor = "#0F6E56"}
-                onBlur={e => (e.currentTarget as HTMLElement).style.borderColor = "#2A4A44"}
+                style={{ background: "#1B2A44", border: "1px solid #2B3D60", color: "#fff" }}
+                onFocus={e => (e.currentTarget as HTMLElement).style.borderColor = "#F28C28"}
+                onBlur={e => (e.currentTarget as HTMLElement).style.borderColor = "#2B3D60"}
               />
               <button type="submit" className="btn-primary text-sm px-4 py-2.5 w-full">
                 Subscribe
@@ -190,9 +197,9 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid #1A3530" }}>
-          <p className="text-xs" style={{ color: "#3A5A54" }}>© {year} MakeMyWay. All rights reserved.</p>
-          <p className="text-xs" style={{ color: "#3A5A54" }}>Made with ❤️ for the City of Joy</p>
+          style={{ borderTop: "1px solid #1E2D4A" }}>
+          <p className="text-xs" style={{ color: "#64748B" }}>© {year} MakeMyWay. All rights reserved.</p>
+          <p className="text-xs" style={{ color: "#64748B" }}>Designed with ❤️ for premium journeys</p>
         </div>
 
       </div>

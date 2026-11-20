@@ -2,8 +2,8 @@ import LegalPageLayout from "../components/LegalPageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Refund Policy – TravelKolkata",
-  description: "TravelKolkata refund timelines, disbursement methods, and non-refundable components.",
+  title: "Refund Policy – MakeMyWay",
+  description: "MakeMyWay refund timelines, disbursement methods, and non-refundable components.",
 };
 
 export default function RefundPage() {
@@ -12,7 +12,7 @@ export default function RefundPage() {
       badge="Refunds"
       icon="💰"
       title="Refund Policy"
-      subtitle="Transparent refund timelines and processes for all TravelKolkata bookings."
+      subtitle="Transparent refund timelines and processes for all MakeMyWay bookings."
       lastUpdated="January 2025"
       accentClass="text-slate-900"
       badgeClass="badge-blue"

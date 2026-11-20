@@ -2,8 +2,8 @@ import LegalPageLayout from "../components/LegalPageLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cancellation Policy – TravelKolkata",
-  description: "Understand our cancellation timelines and penalties for TravelKolkata bookings.",
+  title: "Cancellation Policy – MakeMyWay",
+  description: "Understand our cancellation timelines and penalties for MakeMyWay bookings.",
 };
 
 export default function CancellationPage() {

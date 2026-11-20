@@ -71,25 +71,76 @@ export default function ExploreSection() {
   const [tab, setTab] = useState<"kolkata" | "outstation">("outstation");
 
   return (
-    <section className="section-pad" style={{ background: "#fff" }}>
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="relative section-pad overflow-hidden">
+      {/* Kolkata background image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('https://s7ap1.scene7.com/is/image/incredibleindia/howrah-bridge-howrah-west-bengal-city-1-hero?qlt=82&ts=1742154305591')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      />
+      {/* Dark overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(180deg, rgba(15,27,45,0.92) 0%, rgba(27,58,107,0.80) 45%, rgba(15,27,45,0.94) 100%)",
+        }}
+      />
+
+      <div className="relative max-w-6xl mx-auto px-4" style={{ zIndex: 10 }}>
         <div className="text-center mb-8">
-          <span className="badge badge-blue mb-3">Discover More</span>
-          <h2 className="section-title">Explore Every Corner of Bengal</h2>
-          <p className="section-subtitle mt-3">From Kolkata's iconic landmarks to Bengal's most beautiful outstation destinations.</p>
+          <span
+            className="inline-block mb-3 text-xs font-bold tracking-widest uppercase rounded-full px-4 py-1.5"
+            style={{
+              background: "rgba(242,140,40,0.18)",
+              color: "#F28C28",
+              border: "1px solid rgba(242,140,40,0.4)",
+            }}
+          >
+            Discover More
+          </span>
+          <h2
+            className="section-title"
+            style={{ color: "#ffffff", textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}
+          >
+            Explore Every Corner of Bengal
+          </h2>
+          <p
+            className="mt-3"
+            style={{
+              color: "rgba(255,255,255,0.75)",
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              maxWidth: 560,
+              margin: "0.75rem auto 0",
+            }}
+          >
+            From Kolkata&apos;s iconic landmarks to Bengal&apos;s most beautiful outstation destinations.
+          </p>
         </div>
 
         {/* Tab Toggle */}
         <div className="flex justify-center mb-8">
-          <div className="flex rounded-full p-1" style={{ background: "#E1F5EE", border: "1px solid #9FE1CB" }}>
+          <div className="flex rounded-full p-1.5" style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", backdropFilter: "blur(10px)" }}>
             <button onClick={() => setTab("outstation")}
-              className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all"
-              style={{ background: tab === "outstation" ? "#0F6E56" : "transparent", color: tab === "outstation" ? "#fff" : "#0F6E56" }}>
+              className="px-6 py-2.5 rounded-full text-sm font-bold transition-all"
+              style={{
+                background: tab === "outstation" ? "linear-gradient(135deg, #F28C28, #D97B1E)" : "transparent",
+                color: tab === "outstation" ? "#fff" : "#CBD8EC",
+                boxShadow: tab === "outstation" ? "0 2px 10px rgba(242,140,40,0.3)" : "none",
+              }}>
               🗺️ Outstation
             </button>
             <button onClick={() => setTab("kolkata")}
-              className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all"
-              style={{ background: tab === "kolkata" ? "#0F6E56" : "transparent", color: tab === "kolkata" ? "#fff" : "#0F6E56" }}>
+              className="px-6 py-2.5 rounded-full text-sm font-bold transition-all"
+              style={{
+                background: tab === "kolkata" ? "linear-gradient(135deg, #F28C28, #D97B1E)" : "transparent",
+                color: tab === "kolkata" ? "#fff" : "#CBD8EC",
+                boxShadow: tab === "kolkata" ? "0 2px 10px rgba(242,140,40,0.3)" : "none",
+              }}>
               🌆 Kolkata City
             </button>
           </div>
@@ -101,16 +152,16 @@ export default function ExploreSection() {
             {outstationPlaces.map(p => (
               <div key={p.name}>
                 {"slug" in p ? (
-                  <Link href={`/destinations/${p.slug}`} className="relative overflow-hidden rounded-2xl h-44 group block" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.10)" }}>
+                  <Link href={`/destinations/${p.slug}`} className="relative overflow-hidden rounded-2xl h-44 group block" style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.08)" }}>
                     <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <p className="text-white font-semibold text-sm flex items-center gap-1">{p.name} <span style={{ color: "#5DCAA5" }}>→</span></p>
+                      <p className="text-white font-semibold text-sm flex items-center gap-1">{p.name} <span style={{ color: "#F28C28" }}>→</span></p>
                       <p className="text-white/70 text-xs mt-0.5 leading-relaxed line-clamp-2">{p.desc}</p>
                     </div>
                   </Link>
                 ) : (
-                  <div className="relative overflow-hidden rounded-2xl h-44 group" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.10)" }}>
+                  <div className="relative overflow-hidden rounded-2xl h-44 group" style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.08)" }}>
                     <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -130,7 +181,7 @@ export default function ExploreSection() {
             {kolkataPlaces.map(p => (
               <div key={p.name}
                 className="relative overflow-hidden rounded-2xl h-44 group cursor-pointer"
-                style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.10)" }}>
+                style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.08)" }}>
                 {/* Background Image */}
                 <img
                   src={p.image}

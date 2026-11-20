@@ -12,30 +12,30 @@ const services = [
     icon: "🚗",
     title: "Car Rental Only",
     badge: "Most Flexible",
-    desc: "One car, one driver — yours for the entire day. Explore at your own pace with zero surge pricing and no rebooking stress.",
-    features: ["Full-day dedicated vehicle", "Experienced local driver", "Flexible custom itinerary", "All fuel included"],
+    desc: "One car, one verified chauffeur — exclusively yours for the entire day. Explore at your pace with zero surge pricing and zero stress.",
+    features: ["Full-day dedicated vehicle", "Professional courteous driver", "100% customizable itinerary", "All fuel & tolls transparent"],
     cta: "Explore Car Rental",
-    topColor: "#0F6E56",
+    topColor: "#1B3A6B",
   },
   {
     href: "/services/car-hotel",
     icon: "🏨",
     title: "Car + Hotel Package",
     badge: "Most Popular",
-    desc: "The perfect combo — a comfortable hotel stay with a dedicated sightseeing car every morning. Breakfast included.",
-    features: ["2★ to 5★ hotel options", "Standard / Deluxe / Luxury rooms", "Complimentary breakfast daily", "Car ready outside hotel every morning"],
+    desc: "The premier combination — handpicked hotel stays coupled with a dedicated sightseeing car ready at your doorstep every morning.",
+    features: ["Handpicked 3★ to 5★ verified hotels", "Standard / Deluxe / Suite rooms", "Complimentary daily breakfast", "Dedicated cab for all local travel"],
     cta: "Explore Stay & Ride",
-    topColor: "#1D9E75",
+    topColor: "#F28C28",
   },
   {
     href: "/services/ultimate-package",
     icon: "✈️",
     title: "The Ultimate Package",
-    badge: "Zero Stress",
-    desc: "Tickets + hotels + cars + full itinerary — everything managed by our team. You just show up and enjoy.",
-    features: ["Train & flight tickets booked", "Luxury hotel stays", "Full-day sightseeing car", "Complete day-by-day itinerary"],
+    badge: "VIP All-Inclusive",
+    desc: "Tickets, luxury accommodations, premium chauffeur, curated activities & personal concierge — you just show up and make memories.",
+    features: ["Train & flight bookings managed", "Luxury resort & heritage stays", "Exclusive private vehicle throughout", "Day-by-day tailored itinerary"],
     cta: "Explore Ultimate Package",
-    topColor: "#085041",
+    topColor: "#122850",
   },
 ];
 
@@ -53,17 +53,18 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" ref={sectionRef} className="section-pad px-6" style={{ background: "#FAF9F5" }}>
+    <section id="services" ref={sectionRef} className="section-pad px-6" style={{ background: "#FAFBFD" }}>
       <div className="max-w-7xl mx-auto">
 
         <div className="text-center mb-14">
-          <span className="badge badge-blue mb-4">What We Offer</span>
+          <span className="badge badge-emerald mb-4">What We Offer</span>
           <h2 className="section-title mb-4">
-            Three Packages,<br className="hidden sm:block" />
-            <span style={{ color: "#0F6E56" }}> One Goal — Your Best Trip</span>
+            Curated Packages,<br className="hidden sm:block" />
+            <span style={{ color: "#1B3A6B" }}> Designed for </span>
+            <span style={{ color: "#F28C28" }}>Unforgettable Trips</span>
           </h2>
           <p className="section-subtitle">
-            Choose the package that fits your journey. Every option comes with dedicated support and transparent pricing.
+            Choose the package crafted for your travel style. Every option comes with 24/7 dedicated support and fixed transparent pricing.
           </p>
         </div>
 
@@ -71,25 +72,28 @@ export default function Services() {
           {services.map((s) => (
             <div
               key={s.href}
-              className="service-card card card-hover flex flex-col p-8"
-              style={{ borderTop: `4px solid ${s.topColor}` }}
+              className="service-card card card-hover flex flex-col p-8 transition-all duration-300"
+              style={{
+                borderTop: `4px solid ${s.topColor}`,
+                boxShadow: "0 4px 20px rgba(27,58,107,0.06)",
+              }}
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl"
-                  style={{ background: "#E1F5EE" }}>
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shadow-sm"
+                  style={{ background: "#F0F4FA" }}>
                   {s.icon}
                 </div>
                 <span className="badge badge-blue">{s.badge}</span>
               </div>
 
-              <h3 className="text-xl font-bold mb-3" style={{ color: "#085041" }}>{s.title}</h3>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: "#5F5E5A" }}>{s.desc}</p>
+              <h3 className="text-xl font-bold mb-3" style={{ color: "#1B3A6B" }}>{s.title}</h3>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "#4B5563" }}>{s.desc}</p>
 
               <ul className="space-y-2.5 mb-8 flex-1">
                 {s.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: "#5F5E5A" }}>
+                  <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: "#374151" }}>
                     <svg className="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor" strokeWidth={2.5} style={{ color: "#0F6E56" }}>
+                      stroke="currentColor" strokeWidth={2.5} style={{ color: "#F28C28" }}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     {f}
@@ -105,12 +109,12 @@ export default function Services() {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-sm flex items-center justify-center gap-3 flex-wrap" style={{ color: "#888780" }}>
-            <span>🔒 Secure booking</span>
-            <span style={{ color: "#D3D1C7" }}>|</span>
-            <span>📞 Confirmed within 2 hours</span>
-            <span style={{ color: "#D3D1C7" }}>|</span>
-            <span>💰 Fixed transparent pricing</span>
+          <p className="text-sm flex items-center justify-center gap-3 flex-wrap" style={{ color: "#64748B" }}>
+            <span>🔒 100% Safe & Verified</span>
+            <span style={{ color: "#CBD5E1" }}>|</span>
+            <span>📞 Direct Human Confirmation in 2 Hrs</span>
+            <span style={{ color: "#CBD5E1" }}>|</span>
+            <span>💰 Zero Hidden Costs Guarantee</span>
           </p>
         </div>
 
