@@ -14,6 +14,8 @@
     "@react-three/fiber": "^9.8.1",
     "@types/react-datepicker": "^6.2.0",
     "@types/three": "^0.186.0",
+    "google-auth-library": "^11.3.4",
+    "googleapis": "^190.0.0",
     "gsap": "^3.15.0",
     "next": "^16.4.6",
     "nodemailer": "^10.1.2",
