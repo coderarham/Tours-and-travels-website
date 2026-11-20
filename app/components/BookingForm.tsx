@@ -326,6 +326,12 @@ function CarHotelForm() {
       checkIn: f.get("checkIn") as string,
       checkOut: f.get("checkOut") as string,
       duration: f.get("duration") as string,
+      pickupLocation: f.get("pickupLocation") as string,
+      dropLocation: f.get("dropLocation") as string,
+      pickupDate: f.get("pickupDate") as string,
+      pickupTime: f.get("pickupTime") as string,
+      dropDate: f.get("dropDate") as string,
+      dropTime: f.get("dropTime") as string,
       adults: f.get("adults") as string,
       kids: f.get("kids") as string,
       rooms: f.get("rooms") as string,
@@ -365,6 +371,19 @@ function CarHotelForm() {
             <option className="bg-[#0F1B2D] text-white">Custom</option>
           </Select>
         </Field>
+        <Field label="Pickup Location *"><Input required name="pickupLocation" placeholder="e.g. Howrah Station, Airport" /></Field>
+        <Field label="Pickup Date *"><Input required type="date" name="pickupDate" /></Field>
+        <Field label="Pickup Time *"><Input required type="time" name="pickupTime" /></Field>
+        <Field label="Drop Location">
+          <Select name="dropLocation" defaultValue="">
+            <option value="" disabled className="bg-[#0F1B2D] text-white">Select drop location</option>
+            <option className="bg-[#0F1B2D] text-white">Not Applicable</option>
+            <option className="bg-[#0F1B2D] text-white">Same as Pickup</option>
+            <option className="bg-[#0F1B2D] text-white">Different Location</option>
+          </Select>
+        </Field>
+        <Field label="Drop Date"><Input type="date" name="dropDate" /></Field>
+        <Field label="Drop Time"><Input type="time" name="dropTime" /></Field>
       </div>
 
       <p className="text-xs font-bold uppercase tracking-widest pt-2 flex items-center gap-2" style={{ color: "#F28C28" }}>
